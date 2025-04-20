@@ -1,1 +1,215 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kav Academy – Home</title>
+  <style>
+    :root {
+      --main-color: #b0e0e6;
+      --accent-color: #89c2d9;
+      --accent-color-dark: #78b0c7;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      margin: 0;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo a {
+      text-decoration: none;
+      font-size: 1.4em;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: #333;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      margin: 0 1em;
+      position: relative;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--main-color);
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      height: 2px;
+      background: var(--main-color);
+      width: 0;
+      transition: width 0.3s;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    nav a.active {
+      color: var(--main-color);
+    }
+    nav a.active::after {
+      width: 100%;
+    }
+    main {
+      max-width: 1200px;
+      margin: 2em auto;
+      padding: 0 1em;
+    }
+    section {
+      margin-bottom: 2em;
+    }
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2em 1em;
+      background: #f5fbff;
+      flex-wrap: wrap;
+    }
+    .hero-text {
+      max-width: 600px;
+      margin-right: 2em;
+    }
+    .hero-text h2 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+    }
+    .hero-text p {
+      margin-bottom: 1em;
+      font-size: 1.1em;
+    }
+    .hero-text .btn {
+      font-size: 1.1em;
+      padding: 0.6em 1.2em;
+      margin-top: 0.5em;
+    }
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2em;
+      text-align: center;
+    }
+    .feature h3 {
+      font-size: 1.3em;
+      margin-bottom: 0.5em;
+    }
+    .feature p {
+      font-size: 0.95em;
+    }
+    .btn {
+      display: inline-block;
+      background: var(--accent-color);
+      color: #fff;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      padding: 0.6em 1.2em;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
+      font-weight: 600;
+    }
+    .btn:hover {
+      background: var(--accent-color-dark);
+      transform: translateY(-2px);
+    }
+    .btn:active {
+      transform: translateY(0);
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    footer {
+      text-align: center;
+      padding: 2em 1em;
+      background: #fff;
+      color: #777;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="logo"><a href="home.html">KAV ACADEMY</a></div>
+      <nav>
+        <a href="home.html" class="active">Home</a>
+        <a href="tutors.html">Tutors</a>
+        <a href="bookings.html">Bookings</a>
+        <a href="testimonials.html">Testimonials</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h2 class="fade-in">Unlock Your Potential</h2>
+        <p class="fade-in">At Kav Academy, we provide personalized one-on-one tutoring that empowers students to reach their highest potential. Our elite tutors deliver a tailored learning experience in a luxurious, supportive environment.</p>
+        <p class="fade-in">Experience the difference of individualized attention, expert guidance, and a passion for teaching that sets us apart. Your success story starts here.</p>
+        <a href="bookings.html" class="btn fade-in">Book a Session</a>
+      </div>
+      <div class="hero-image fade-in">
+        <img src="https://images.pexels.com/photos/5311406/pexels-photo-5311406.jpeg" alt="Tutor helping a student">
+      </div>
+    </section>
+    <section class="features">
+      <div class="feature fade-in">
+        <h3>Personalized Approach</h3>
+        <p>Every session is tailored to the student's needs, ensuring efficient and effective learning.</p>
+      </div>
+      <div class="feature fade-in">
+        <h3>Expert Tutors</h3>
+        <p>Learn from highly qualified tutors with outstanding credentials and a passion for teaching.</p>
+      </div>
+      <div class="feature fade-in">
+        <h3>Flexible Scheduling</h3>
+        <p>Schedule sessions at your convenience – our tutors are available when and where you need them.</p>
+      </div>
+      <div class="feature fade-in">
+        <h3>Proven Results</h3>
+        <p>Our students see measurable improvements in grades, test scores, and confidence.</p>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Kav Academy. All rights reserved.</p>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Fade-in animation for elements with .fade-in
+      document.querySelectorAll('.fade-in').forEach(function(el, index) {
+        setTimeout(function() {
+          el.classList.add('visible');
+        }, index * 200);
+      });
+    });
+  </script>
+</body>
+</html>
