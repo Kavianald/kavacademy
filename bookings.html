@@ -9,19 +9,20 @@
       --main-color: #b0e0e6;
       --accent-color: #89c2d9;
       --accent-color-dark: #78b0c7;
+      --luxury-bg: #fdfdfd;
+      --card-shadow: rgba(0, 0, 0, 0.1);
     }
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       margin: 0;
       color: #333;
+      background: var(--luxury-bg);
       line-height: 1.6;
     }
     header {
       background: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 5px var(--card-shadow);
     }
     .header-container {
       max-width: 1200px;
@@ -45,7 +46,7 @@
       position: relative;
       transition: color 0.3s;
     }
-    nav a:hover {
+    nav a:hover, nav a.active {
       color: var(--main-color);
     }
     nav a::after {
@@ -58,95 +59,31 @@
       width: 0;
       transition: width 0.3s;
     }
-    nav a:hover::after {
-      width: 100%;
-    }
-    nav a.active {
-      color: var(--main-color);
-    }
-    nav a.active::after {
+    nav a:hover::after, nav a.active::after {
       width: 100%;
     }
     main {
-      max-width: 600px;
-      margin: 2em auto;
+      max-width: 800px;
+      margin: 3em auto;
       padding: 0 1em;
+      text-align: center;
     }
     h2 {
-      font-size: 2em;
+      font-size: 2.5em;
       margin-bottom: 0.5em;
+      letter-spacing: 0.05em;
     }
     p {
-      margin-bottom: 1em;
+      margin-bottom: 1.5em;
+      font-size: 1.1em;
+      color: #555;
     }
-    form {
-      max-width: 100%;
-      margin: 1em 0;
-    }
-    .form-row {
-      display: flex;
-      gap: 1em;
-    }
-    .form-row .form-group {
-      flex: 1;
-    }
-    .form-group {
-      margin-bottom: 1em;
-    }
-    .form-group label {
-      display: block;
-      margin-bottom: 0.3em;
-      font-weight: 500;
-    }
-    .form-group input {
-      width: 100%;
-      padding: 0.5em;
-      font-size: 1em;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .form-group input:focus {
-      outline: none;
-      border-color: var(--main-color);
-      box-shadow: 0 0 5px rgba(176, 224, 230, 0.5);
-    }
-    .btn {
-      display: inline-block;
-      background: var(--accent-color);
-      color: #fff;
-      text-decoration: none;
-      border: none;
-      border-radius: 5px;
-      padding: 0.6em 1.2em;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
-      font-weight: 600;
-      font-size: 1em;
-    }
-    .btn:hover {
-      background: var(--accent-color-dark);
-      transform: translateY(-2px);
-    }
-    .btn:active {
-      transform: translateY(0);
-    }
-    .success-message {
-      display: none;
-      padding: 1em;
-      margin-top: 1em;
-      border: 2px solid #c3e6cb;
-      background: #d4edda;
-      color: #155724;
-      border-radius: 4px;
-    }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .calendly-card {
+      max-width: 600px;
+      margin: 0 auto;
+      box-shadow: 0 4px 15px var(--card-shadow);
+      border-radius: 8px;
+      overflow: hidden;
     }
     footer {
       text-align: center;
@@ -154,7 +91,10 @@
       background: #fff;
       color: #777;
       font-size: 0.9em;
+      margin-top: 4em;
     }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
@@ -169,62 +109,28 @@
       </nav>
     </div>
   </header>
+
   <main>
-    <h2 class="fade-in">Book a Session</h2>
-    <p class="fade-in">Ready to achieve your academic goals? Schedule a private tutoring session by filling out the form below. We will reach out to confirm your appointment.</p>
-    <form id="booking-form" class="fade-in">
-      <div class="form-row">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required />
-        </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="subject">Subject</label>
-        <input type="text" id="subject" name="subject" required />
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="date">Preferred Date</label>
-          <input type="date" id="date" name="date" required />
-        </div>
-        <div class="form-group">
-          <label for="time">Preferred Time</label>
-          <input type="time" id="time" name="time" required />
-        </div>
-      </div>
-      <button type="submit" class="btn">Submit</button>
-    </form>
-    <p id="success-message" class="success-message">Thank you! Your booking request has been received. We will be in touch shortly.</p>
+    <h2 class="fade-in">Book Your Intro Session</h2>
+    <p class="fade-in">Take advantage of our exclusive discounted Intro Session. Once booked, this link will expire, ensuring only one session per customer.</p>
+
+    <div class="calendly-card fade-in">
+      <!-- Calendly inline widget begin -->
+      <div class="calendly-inline-widget" data-url="https://calendly.com/kavianald/30min" style="min-width:320px;height:700px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      <!-- Calendly inline widget end -->
+    </div>
   </main>
+
   <footer>
     <p>© 2025 Kav Academy. All rights reserved.</p>
   </footer>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Fade-in animation
-      document.querySelectorAll('.fade-in').forEach(function(el, index) {
-        setTimeout(function() {
-          el.classList.add('visible');
-        }, index * 200);
+      document.querySelectorAll('.fade-in').forEach(function(el, i) {
+        setTimeout(function() { el.classList.add('visible'); }, i * 200);
       });
-      // Form validation and submission handling
-      var form = document.getElementById('booking-form');
-      if (form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          if (!form.checkValidity()) {
-            form.reportValidity();
-          } else {
-            document.getElementById('success-message').style.display = 'block';
-            form.style.display = 'none';
-          }
-        });
-      }
     });
   </script>
 </body>
