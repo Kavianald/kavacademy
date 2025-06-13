@@ -3,21 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kav Academy – Tutors</title>
+  <title>Kav Academy – Tutor</title>
   <style>
     :root {
       --main-color: #b0e0e6;
       --accent-color: #89c2d9;
       --accent-color-dark: #78b0c7;
     }
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       margin: 0;
-      color: #333;
-      line-height: 1.6;
+      color: #222;
+      line-height: 1.7;
+      background: #f5f8fa;
     }
     header {
       background: #fff;
@@ -45,87 +44,89 @@
       position: relative;
       transition: color 0.3s;
     }
-    nav a:hover {
-      color: var(--main-color);
-    }
-    nav a::after {
-      content: "";
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      height: 2px;
-      background: var(--main-color);
-      width: 0;
-      transition: width 0.3s;
-    }
-    nav a:hover::after {
-      width: 100%;
-    }
-    nav a.active {
-      color: var(--main-color);
-    }
-    nav a.active::after {
-      width: 100%;
-    }
+    nav a:hover { color: var(--main-color); }
+    nav a.active { color: var(--main-color); }
     main {
-      max-width: 1200px;
-      margin: 2em auto;
+      max-width: 750px;
+      margin: 3em auto 2em auto;
       padding: 0 1em;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 32px rgba(176,224,230,0.15);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    h2 {
-      font-size: 2em;
-      margin-bottom: 0.5em;
+    .tutor-profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5em;
+      padding: 2em 0 1em 0;
     }
-    section {
-      margin-bottom: 2em;
-    }
-    .tutor-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2em;
-    }
-    .tutor-card {
-      background: #f9f9f9;
-      padding: 1em;
-      border-radius: 8px;
-      text-align: center;
-    }
-    .tutor-card img {
-      max-width: 100%;
-      height: auto;
+    .tutor-profile img {
+      width: 155px;
+      height: 155px;
       border-radius: 50%;
       object-fit: cover;
-      object-position: center;
+      box-shadow: 0 2px 10px rgba(176,224,230,0.28);
+      border: 4px solid var(--main-color);
     }
-    .tutor-card h3 {
+    .tutor-name {
+      font-size: 2em;
+      font-weight: 700;
       margin: 0.5em 0 0.2em;
-      font-size: 1.2em;
+      color: #222;
+      letter-spacing: 0.02em;
     }
-    .tutor-card h4 {
-      margin: 0.2em 0 0.5em;
-      font-size: 1em;
-      font-weight: normal;
-      color: #555;
+    .tutor-qual {
+      color: #89c2d9;
+      font-size: 1.1em;
+      font-weight: 500;
+      margin-bottom: 0.2em;
     }
-    .tutor-card p {
-      font-size: 0.95em;
-      color: #555;
+    .tutor-bio {
+      font-size: 1.07em;
+      max-width: 570px;
+      color: #444;
+      margin-bottom: 1.5em;
+      text-align: center;
     }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    .badge {
+      display: inline-block;
+      margin: 0.4em 0.25em;
+      padding: 0.3em 0.9em;
+      background: var(--accent-color);
+      color: #fff;
+      border-radius: 50px;
+      font-size: 0.96em;
+      letter-spacing: 0.04em;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(137,194,217,0.10);
     }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .motto {
+      font-size: 1.17em;
+      color: var(--accent-color-dark);
+      margin-top: 1.2em;
+      font-style: italic;
+      font-weight: 600;
+      background: #e6f3fa;
+      padding: 0.7em 1.2em;
+      border-radius: 1em;
+      display: inline-block;
     }
     footer {
       text-align: center;
       padding: 2em 1em;
       background: #fff;
       color: #777;
-      font-size: 0.9em;
+      font-size: 0.95em;
+      margin-top: 2em;
+    }
+    @media (max-width: 600px) {
+      main { margin: 1.5em 0; padding: 0 0.5em; }
+      .tutor-bio { font-size: 0.98em; }
+      .tutor-profile img { width: 110px; height: 110px; }
     }
   </style>
 </head>
@@ -135,47 +136,34 @@
       <div class="logo"><a href="home.html">KAV ACADEMY</a></div>
       <nav>
         <a href="home.html">Home</a>
-        <a href="tutors.html" class="active">Tutors</a>
+        <a href="tutors.html" class="active">Tutor</a>
         <a href="bookings.html">Bookings</a>
         <a href="testimonials.html">Testimonials</a>
       </nav>
     </div>
   </header>
   <main>
-    <h2 class="fade-in">Our Tutors</h2>
-    <p class="fade-in">Meet the expert tutors who make Kav Academy exceptional. Each tutor is highly qualified, experienced, and dedicated to your success.</p>
-    <section class="tutor-cards">
-      <div class="tutor-card fade-in">
-        <img src="https://cdn.pixabay.com/photo/2019/09/27/04/45/reader-4507506_1280.jpg" alt="Alexander Hughes" />
-        <h3>Alexander Hughes</h3>
-        <h4>Mathematics &amp; Physics Tutor</h4>
-        <p>Ph.D. in Physics (MIT). A former university lecturer with 10+ years of experience, Alexander specializes in helping students conquer advanced math and physics, from calculus to quantum mechanics.</p>
+    <section class="tutor-profile">
+      <img src="IMG_0301.JPG" alt="Kavian Aldavoud" />
+      <div class="tutor-name">Kavian Aldavoud</div>
+      <div class="tutor-qual">BSc Biology, University of British Columbia</div>
+      <div>
+        <span class="badge">IB Diploma – WVSS Alum</span>
+        <span class="badge">30+ Students Helped</span>
+        <span class="badge">Former Academy Tutor</span>
       </div>
-      <div class="tutor-card fade-in">
-        <img src="IMG_0301.JPG" alt="Sophia Patel" />
-        <h3>Kavian Aldavoud</h3>
-        <h4>All Subjects</h4>
-        <p>BSc. in Biology (UBC). As a former West Vancouver Secondary School IB student with plenty of struggles to finally get my grades up, I know exactly how to help my students improve their grades, extracurriculars, and confidence. Having formerly worked at a tutoring academy before setting up my own private practice, I have helped 30+ students improve their grades. </p>
+      <div class="tutor-bio">
+        I’m Kavian, a UBC Biology grad and IB alum from West Vancouver Secondary. Before starting my own practice, I worked at a major tutoring academy, helping over 30 students raise their grades and confidence. What sets me apart? I’m young, so I’ve actually had many of the teachers my students have now—and I remember what it’s like to struggle.<br><br>
+        A lot of top-degree tutors can’t break things down for students who are genuinely stuck. I’ve been there, and I had to figure out *how to learn* myself. Now, I make that process easier for your kids, using proven strategies that really work.<br><br>
+        If you want someone who gets it, motivates, and actually delivers—let’s work together!
       </div>
-      <div class="tutor-card fade-in">
-        <img src="https://images.unsplash.com/photo-1583468982228-19f19164aee2?fm=jpg&amp;q=60&amp;w=3000&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA==" alt="Emily Chen" />
-        <h3>Emily Chen</h3>
-        <h4>English &amp; Writing Tutor</h4>
-        <p>B.A. in Education (UCLA). Emily specializes in language arts and early education. She has a knack for engaging young learners and has helped many students improve their reading and writing skills through creative, fun lessons.</p>
+      <div class="motto">
+        "Undercut and overdeliver."
       </div>
     </section>
   </main>
   <footer>
     <p>© 2025 Kav Academy. All rights reserved.</p>
   </footer>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.fade-in').forEach(function(el, index) {
-        setTimeout(function() {
-          el.classList.add('visible');
-        }, index * 200);
-      });
-    });
-  </script>
 </body>
 </html>
