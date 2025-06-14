@@ -69,6 +69,65 @@
     }
     .contact-card a:hover { text-decoration: underline; }
 
+    /* FAQ styles */
+    .faq-section {
+      max-width: 600px;
+      margin: 2em auto;
+      padding: 0 1em;
+    }
+    .faq-card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 6px 32px rgba(176,224,230,0.15);
+      padding: 2em 2em;
+      text-align: left;
+    }
+    .faq-card h3 {
+      font-size: 2em;
+      margin-bottom: 1em;
+      color: #222;
+      text-align: center;
+    }
+    .faq-card details {
+      margin-bottom: 1em;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 1em;
+      transition: all 0.3s ease;
+    }
+    .faq-card summary {
+      font-weight: 600;
+      font-size: 1.1em;
+      cursor: pointer;
+      list-style: none;
+      position: relative;
+      padding-right: 1.5em;
+    }
+    .faq-card summary::-webkit-details-marker { display: none; }
+    .faq-card summary::after {
+      content: '+';
+      position: absolute;
+      right: 0;
+      font-size: 1.2em;
+      transition: transform 0.3s ease;
+    }
+    .faq-card details[open] summary::after {
+      content: '-';
+      transform: rotate(180deg);
+    }
+    .faq-card details p {
+      margin-top: 0.5em;
+      font-size: 1em;
+      color: #555;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+    }
+    .faq-card details[open] p {
+      max-height: 200px;
+      opacity: 1;
+    }
+
     .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
     .fade-in.visible { opacity: 1; transform: translateY(0); }
 
@@ -81,9 +140,10 @@
       margin-top: 2em;
     }
     @media (max-width: 600px) {
-      .contact-card { padding: 2em 1em; }
+      .contact-card, .faq-card { padding: 2em 1em; }
       .contact-card h2 { font-size: 2em; }
-      .contact-card p { font-size: 0.98em; }
+      .contact-card p, .faq-card p { font-size: 0.98em; }
+      .faq-card h3 { font-size: 1.6em; }
     }
   </style>
 </head>
@@ -108,13 +168,31 @@
       <p><strong>Email:</strong> <a href="mailto:info@kavacademy.com">info@kavacademy.com</a></p>
     </div>
   </section>
+  <!-- FAQ Section -->
+  <section class="faq-section fade-in">
+    <div class="faq-card fade-in">
+      <h3>Frequently Asked Questions</h3>
+      <details>
+        <summary>How quickly will I receive a response?</summary>
+        <p>I aim to reply within 24 hours on weekdays. Weekend inquiries are answered first thing Monday morning.</p>
+      </details>
+      <details>
+        <summary>Do you offer online tutoring?</summary>
+        <p>Yes—live sessions are available via Zoom or Google Meet, in addition to in-person lessons in West Vancouver.</p>
+      </details>
+      <details>
+        <summary>What payment methods are accepted?</summary>
+        <p>I accept credit card (via Stripe), e-transfer, or cash payments for in-person sessions.</p>
+      </details>
+    </div>
+  </section>
   <footer>
     <p>© 2025 Kav Academy. All rights reserved.</p>
   </footer>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.fade-in').forEach(function(el, index) {
-        setTimeout(function() { el.classList.add('visible'); }, index * 200);
+      document.querySelectorAll('.fade-in').forEach(function(el, idx) {
+        setTimeout(function() { el.classList.add('visible'); }, idx * 200);
       });
     });
   </script>
