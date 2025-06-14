@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ame fariba</title>
+  <style>
+    /* Center text and hide overflow */
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #fff;
+      overflow: hidden;
+    }
+    /* Text styling and fade-in animation */
+    h1 {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      font-size: 4em;
+      position: relative;
+      z-index: 1;
+      color: #333;
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    /* Heart shape */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: floatUp 4s ease-out infinite;
+    }
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+    .heart::before { top: -10px; left: 0; }
+    .heart::after  { left: 10px; top: 0; }
+    /* Float-up and fade-out */
+    @keyframes floatUp {
+      0%   { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-200px) scale(1.5); }
+    }
+  </style>
+</head>
+<body>
+  <h1>ame fariba</h1>
+  <script>
+    // Create a heart at random around the text
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      const size = Math.random() * 20 + 10;
+      heart.style.width = size + 'px';
+      heart.style.height = size + 'px';
+      // Position hearts around center text +/- 100px
+      const xOffset = (Math.random() * 200) - 100;
+      const yOffset = (Math.random() * 200) - 100;
+      heart.style.left = (window.innerWidth / 2 + xOffset - size / 2) + 'px';
+      heart.style.top  = (window.innerHeight / 2 + yOffset - size / 2) + 'px';
+      heart.style.animationDuration = (Math.random() * 2 + 3) + 's';
+      document.body.appendChild(heart);
+      // Remove after animation
+      setTimeout(() => heart.remove(), 5000);
+    }
+    // Generate hearts every 500ms
+    setInterval(createHeart, 500);
+  </script>
+</body>
+</html>
