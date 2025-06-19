@@ -10,118 +10,228 @@
       --accent-color: #89c2d9;
       --accent-color-dark: #78b0c7;
     }
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       margin: 0;
       color: #333;
       line-height: 1.6;
     }
-    header { background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+    header {
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
     .header-container {
-      max-width: 1200px; margin: 0 auto; padding: 1em;
-      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
     .logo a {
-      text-decoration: none; font-size: 1.4em; font-weight: 600; letter-spacing: 0.1em; color: #333;
+      text-decoration: none;
+      font-size: 1.4em;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: #333;
     }
     nav a {
-      text-decoration: none; color: #333; margin: 0 1em; position: relative; transition: color 0.3s;
+      text-decoration: none;
+      color: #333;
+      margin: 0 1em;
+      position: relative;
+      transition: color 0.3s;
     }
-    nav a:hover { color: var(--main-color); }
+    nav a:hover {
+      color: var(--main-color);
+    }
     nav a::after {
-      content: ""; position: absolute; bottom: -4px; left: 0;
-      height: 2px; background: var(--main-color); width: 0; transition: width 0.3s;
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      height: 2px;
+      background: var(--main-color);
+      width: 0;
+      transition: width 0.3s;
     }
-    nav a:hover::after,
-    nav a.active::after { width: 100%; }
-    nav a.active { color: var(--main-color); }
+    nav a:hover::after {
+      width: 100%;
+    }
+    nav a.active {
+      color: var(--main-color);
+    }
+    nav a.active::after {
+      width: 100%;
+    }
 
-    main { max-width: 1200px; margin: 2em auto; padding: 0 1em; }
-    section { margin-bottom: 2em; }
+    main {
+      max-width: 1200px;
+      margin: 2em auto;
+      padding: 0 1em;
+    }
+    section {
+      margin-bottom: 2em;
+    }
 
     /* Hero */
     .hero {
-      display: flex; align-items: center; justify-content: center;
-      padding: 2em 1em; background: #f5fbff; flex-wrap: wrap;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2em 1em;
+      background: #f5fbff;
+      flex-wrap: wrap;
     }
-    .hero-text { max-width: 600px; margin-right: 2em; }
-    .hero-text h2 { font-size: 2.5em; margin-bottom: .5em; }
-    .hero-text p { margin-bottom: 1em; font-size: 1.1em; }
-    .hero-text .btn { font-size: 1.1em; padding: .6em 1.2em; margin-top: .5em; margin-bottom: 2rem; }
-    .hero-image img { max-width: 100%; height: auto; border-radius: 10px; }
+    .hero-text {
+      max-width: 600px;
+      margin-right: 2em;
+    }
+    .hero-text h2 {
+      font-size: 2.5em;
+      margin-bottom: 0.5em;
+    }
+    .hero-text p {
+      margin-bottom: 1em;
+      font-size: 1.1em;
+    }
+    .hero-text .btn {
+      font-size: 1.1em;
+      padding: 0.6em 1.2em;
+      margin-top: 0.5em;
+      margin-bottom: 2rem;
+    }
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
 
     /* Features */
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2em; text-align: center;
+      gap: 2em;
+      text-align: center;
     }
-    .feature h3 { font-size: 1.3em; margin-bottom: .5em; }
-    .feature p { font-size: .95em; }
+    .feature h3 {
+      font-size: 1.3em;
+      margin-bottom: 0.5em;
+    }
+    .feature p {
+      font-size: 0.95em;
+    }
 
     /* Buttons */
     .btn {
-      display: inline-block; background: var(--accent-color); color: #fff;
-      text-decoration: none; border: none; border-radius: 5px;
-      padding: .6em 1.2em; cursor: pointer; transition: background .3s, transform .3s;
+      display: inline-block;
+      background: var(--accent-color);
+      color: #fff;
+      text-decoration: none;
+      border: none;
+      border-radius: 5px;
+      padding: 0.6em 1.2em;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.3s;
       font-weight: 600;
     }
-    .btn:hover { background: var(--accent-color-dark); transform: translateY(-2px); }
-    .btn:active { transform: translateY(0); }
+    .btn:hover {
+      background: var(--accent-color-dark);
+      transform: translateY(-2px);
+    }
+    .btn:active {
+      transform: translateY(0);
+    }
 
-    /* Fade In Animation */
+    /* Fade-In Animation */
     .fade-in {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity .6s ease-out, transform .6s ease-out;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
     .fade-in.visible {
-      opacity: 1; transform: translateY(0);
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    /* New: Services Section */
+    /* Services Section */
     .services {
       text-align: center;
     }
     .services h2 {
-      font-size: 2em; margin-bottom: 1em; color: var(--accent-color);
+      font-size: 2em;
+      margin-bottom: 1em;
+      color: var(--accent-color);
     }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5em;
+      grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+      gap: 2em;
+      text-align: center;
+    }
+    @media (max-width: 800px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+      }
+    }
+    @media (max-width: 500px) {
+      .services-grid {
+        grid-template-columns: 1fr; /* 1 column on phones */
+      }
     }
     .service h3 {
-      font-size: 1.2em; font-weight: 600; margin: 0;
+      font-size: 1.2em;
+      font-weight: 600;
+      margin: 0;
     }
 
-    /* New: Courses Section */
+    /* Courses Section */
     .courses {
       text-align: center;
     }
     .courses h2 {
-      font-size: 2em; margin-bottom: .8em; color: var(--accent-color);
+      font-size: 2em;
+      margin-bottom: 0.8em;
+      color: var(--accent-color);
     }
     .course-list {
-      list-style: none; padding: 0;
-      display: flex; flex-wrap: wrap; justify-content: center; gap: .8em;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.8em;
     }
     .course-list li {
-      background: var(--accent-color); color: #fff;
-      padding: .5em 1em; border-radius: 5px; font-weight: 600;
+      background: var(--accent-color);
+      color: #fff;
+      padding: 0.5em 1em;
+      border-radius: 5px;
+      font-weight: 600;
     }
     .certifications {
       margin-top: 1em;
     }
     .badge {
-      display: inline-block; background: #fff; color: var(--accent-color);
-      border: 2px solid var(--accent-color); border-radius: 12px;
-      padding: .3em .8em; margin: 0 .5em; font-weight: 600;
+      display: inline-block;
+      background: #fff;
+      color: var(--accent-color);
+      border: 2px solid var(--accent-color);
+      border-radius: 12px;
+      padding: 0.3em 0.8em;
+      margin: 0 0.5em;
+      font-weight: 600;
     }
 
     footer {
-      text-align: center; padding: 2em 1em; background: #fff;
-      color: #777; font-size: .9em;
+      text-align: center;
+      padding: 2em 1em;
+      background: #fff;
+      color: #777;
+      font-size: 0.9em;
     }
   </style>
 </head>
@@ -140,13 +250,16 @@
   </header>
 
   <main>
-    <!-- existing hero & features... -->
-
+    <!-- Hero Section -->
     <section class="hero">
       <div class="hero-text">
         <h2 class="fade-in">Unlock Your Potential</h2>
-        <p class="fade-in">Welcome to Kav Academy, an academy that provides personalized one-on-one tutoring that empowers students to reach their highest potential. Kav Academy delivers a tailored learning experience in a simple and effective way that has helped many students excel.</p>
-        <p class="fade-in">Experience the difference of individualized attention, expert guidance, and a passion for teaching that sets me apart. Your success story starts here.</p>
+        <p class="fade-in">
+          Welcome to Kav Academy, an academy that provides personalized one-on-one tutoring that empowers students to reach their highest potential. Kav Academy delivers a tailored learning experience in a simple and effective way that has helped many students excel.
+        </p>
+        <p class="fade-in">
+          Experience the difference of individualized attention, expert guidance, and a passion for teaching that sets me apart. Your success story starts here.
+        </p>
         <a href="../bookings/" class="btn fade-in">Book a Session</a>
       </div>
       <div class="hero-image fade-in">
@@ -154,26 +267,35 @@
       </div>
     </section>
 
+    <!-- Features Section -->
     <section class="features">
       <div class="feature fade-in">
         <h3>Personalized Approach</h3>
-        <p>Every session is tailored to the student's needs, ensuring efficient and effective learning. We identify weaknesses strategically and target them directly to get you where you want to be.</p>
+        <p>
+          Every session is tailored to the student's needs, ensuring efficient and effective learning. We identify weaknesses strategically and target them directly to get you where you want to be.
+        </p>
       </div>
       <div class="feature fade-in">
         <h3>Expert Tutors</h3>
-        <p>Learn from highly qualified and experienced tutors with outstanding credentials and a passion for teaching. The results speak for themselves.</p>
+        <p>
+          Learn from highly qualified and experienced tutors with outstanding credentials and a passion for teaching. The results speak for themselves.
+        </p>
       </div>
       <div class="feature fade-in">
         <h3>Flexible Scheduling</h3>
-        <p>Schedule sessions at your convenience – I offer single-session bookings available throughout the week, with no long-term commitment to any rigid schedule.</p>
+        <p>
+          Schedule sessions at your convenience – I offer single-session bookings available throughout the week, with no long-term commitment to any rigid schedule.
+        </p>
       </div>
       <div class="feature fade-in">
         <h3>Proven Results</h3>
-        <p>My students see measurable improvements in grades, test scores, and confidence - all from day one.</p>
+        <p>
+          My students see measurable improvements in grades, test scores, and confidence - all from day one.
+        </p>
       </div>
     </section>
 
-    <!-- New Services Section -->
+    <!-- Services Section -->
     <section class="services">
       <h2 class="fade-in">Services I Offer</h2>
       <div class="services-grid">
@@ -186,7 +308,7 @@
       </div>
     </section>
 
-    <!-- New Courses Section -->
+    <!-- Courses Section -->
     <section class="courses">
       <h2 class="fade-in">Courses I Teach</h2>
       <ul class="course-list fade-in">
