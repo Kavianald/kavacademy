@@ -58,14 +58,12 @@
       width: 0;
       transition: width 0.3s;
     }
-    nav a:hover::after {
+    nav a:hover::after,
+    nav a.active::after {
       width: 100%;
     }
     nav a.active {
       color: var(--main-color);
-    }
-    nav a.active::after {
-      width: 100%;
     }
 
     main {
@@ -168,24 +166,51 @@
     }
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* 3 columns on desktop */
+      grid-template-columns: repeat(3, 1fr);
       gap: 2em;
-      text-align: center;
     }
     @media (max-width: 800px) {
       .services-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on tablets */
+        grid-template-columns: repeat(2, 1fr);
       }
     }
     @media (max-width: 500px) {
       .services-grid {
-        grid-template-columns: 1fr; /* 1 column on phones */
+        grid-template-columns: 1fr;
       }
     }
-    .service h3 {
+
+    .service-box {
+      background: #fff;
+      border: 1px solid var(--accent-color);
+      border-radius: 8px;
+      padding: 1.5em;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+    }
+    .service-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .service-title {
       font-size: 1.2em;
       font-weight: 600;
       margin: 0;
+      color: #333;
+    }
+    .service-desc {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+      margin-top: 0;
+      color: #555;
+    }
+    .service-box.active .service-desc {
+      max-height: 200px; /* adjust if you need more */
+      opacity: 1;
+      margin-top: 1em;
     }
 
     /* Courses Section */
@@ -290,7 +315,7 @@
       <div class="feature fade-in">
         <h3>Proven Results</h3>
         <p>
-          My students see measurable improvements in grades, test scores, and confidence - all from day one.
+          My students see measurable improvements in grades, test scores, and confidence – all from day one.
         </p>
       </div>
     </section>
@@ -299,12 +324,42 @@
     <section class="services">
       <h2 class="fade-in">Services I Offer</h2>
       <div class="services-grid">
-        <div class="service fade-in"><h3>One-on-One Tutoring</h3></div>
-        <div class="service fade-in"><h3>Group Tutoring</h3></div>
-        <div class="service fade-in"><h3>Resumes</h3></div>
-        <div class="service fade-in"><h3>University Planning, Applications &amp; Scholarships</h3></div>
-        <div class="service fade-in"><h3>Personal Profile</h3></div>
-        <div class="service fade-in"><h3>Coaching, Planning &amp; Mentoring</h3></div>
+        <div class="service-box fade-in">
+          <h3 class="service-title">One-on-One Tutoring</h3>
+          <p class="service-desc">
+            Customized individual sessions focusing on your specific challenges and goals to ensure maximum progress and confidence.
+          </p>
+        </div>
+        <div class="service-box fade-in">
+          <h3 class="service-title">Group Tutoring</h3>
+          <p class="service-desc">
+            Collaborative group sessions designed to foster peer learning, discussion, and problem-solving in small, focused cohorts.
+          </p>
+        </div>
+        <div class="service-box fade-in">
+          <h3 class="service-title">Resumes</h3>
+          <p class="service-desc">
+            Professional resume crafting that highlights your achievements, skills, and career goals, tailored to each opportunity.
+          </p>
+        </div>
+        <div class="service-box fade-in">
+          <h3 class="service-title">University Planning, Applications &amp; Scholarships</h3>
+          <p class="service-desc">
+            Expert guidance through university selection, application strategies, and securing bursaries, grants, and scholarships.
+          </p>
+        </div>
+        <div class="service-box fade-in">
+          <h3 class="service-title">Personal Profile</h3>
+          <p class="service-desc">
+            Develop a compelling personal and academic profile that showcases your unique strengths and experiences to admissions committees.
+          </p>
+        </div>
+        <div class="service-box fade-in">
+          <h3 class="service-title">Coaching, Planning &amp; Mentoring</h3>
+          <p class="service-desc">
+            Holistic coaching and mentoring for academic planning, goal setting, and long-term success strategies.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -332,10 +387,18 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
+      // fade-in sequence
       document.querySelectorAll('.fade-in').forEach(function(el, index) {
         setTimeout(function() {
           el.classList.add('visible');
         }, index * 200);
+      });
+
+      // service-box accordion toggles
+      document.querySelectorAll('.service-box').forEach(function(box) {
+        box.addEventListener('click', function() {
+          box.classList.toggle('active');
+        });
       });
     });
   </script>
