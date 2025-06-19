@@ -180,7 +180,12 @@
       }
     }
 
+    /* Flexbox centering + accordion behavior */
     .service-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;        /* center title when collapsed */
+      text-align: center;
       background: #fff;
       border: 1px solid var(--accent-color);
       border-radius: 8px;
@@ -203,12 +208,15 @@
       max-height: 0;
       overflow: hidden;
       opacity: 0;
-      transition: max-height 0.4s ease, opacity 0.4s ease;
+      transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
       margin-top: 0;
       color: #555;
     }
+    .service-box.active {
+      justify-content: flex-start;    /* top-align when expanded */
+    }
     .service-box.active .service-desc {
-      max-height: 200px; /* adjust if you need more */
+      max-height: 200px;              /* show description */
       opacity: 1;
       margin-top: 1em;
     }
@@ -387,14 +395,14 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // fade-in sequence
+      // Fade-in sequence
       document.querySelectorAll('.fade-in').forEach(function(el, index) {
         setTimeout(function() {
           el.classList.add('visible');
         }, index * 200);
       });
 
-      // service-box accordion toggles
+      // Accordion toggle for service boxes
       document.querySelectorAll('.service-box').forEach(function(box) {
         box.addEventListener('click', function() {
           box.classList.toggle('active');
