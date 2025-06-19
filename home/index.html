@@ -10,149 +10,118 @@
       --accent-color: #89c2d9;
       --accent-color-dark: #78b0c7;
     }
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       margin: 0;
       color: #333;
       line-height: 1.6;
     }
-    header {
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
+    header { background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
     .header-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      max-width: 1200px; margin: 0 auto; padding: 1em;
+      display: flex; align-items: center; justify-content: space-between;
     }
     .logo a {
-      text-decoration: none;
-      font-size: 1.4em;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: #333;
+      text-decoration: none; font-size: 1.4em; font-weight: 600; letter-spacing: 0.1em; color: #333;
     }
     nav a {
-      text-decoration: none;
-      color: #333;
-      margin: 0 1em;
-      position: relative;
-      transition: color 0.3s;
+      text-decoration: none; color: #333; margin: 0 1em; position: relative; transition: color 0.3s;
     }
-    nav a:hover {
-      color: var(--main-color);
-    }
+    nav a:hover { color: var(--main-color); }
     nav a::after {
-      content: "";
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      height: 2px;
-      background: var(--main-color);
-      width: 0;
-      transition: width 0.3s;
+      content: ""; position: absolute; bottom: -4px; left: 0;
+      height: 2px; background: var(--main-color); width: 0; transition: width 0.3s;
     }
-    nav a:hover::after {
-      width: 100%;
-    }
-    nav a.active {
-      color: var(--main-color);
-    }
-    nav a.active::after {
-      width: 100%;
-    }
-    main {
-      max-width: 1200px;
-      margin: 2em auto;
-      padding: 0 1em;
-    }
-    section {
-      margin-bottom: 2em;
-    }
+    nav a:hover::after,
+    nav a.active::after { width: 100%; }
+    nav a.active { color: var(--main-color); }
+
+    main { max-width: 1200px; margin: 2em auto; padding: 0 1em; }
+    section { margin-bottom: 2em; }
+
+    /* Hero */
     .hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2em 1em;
-      background: #f5fbff;
-      flex-wrap: wrap;
+      display: flex; align-items: center; justify-content: center;
+      padding: 2em 1em; background: #f5fbff; flex-wrap: wrap;
     }
-    .hero-text {
-      max-width: 600px;
-      margin-right: 2em;
-    }
-    .hero-text h2 {
-      font-size: 2.5em;
-      margin-bottom: 0.5em;
-    }
-    .hero-text p {
-      margin-bottom: 1em;
-      font-size: 1.1em;
-    }
-    .hero-text .btn {
-      font-size: 1.1em;
-      padding: 0.6em 1.2em;
-      margin-top: 0.5em;
-      margin-bottom: 2rem; /* added extra space below button */
-    }
-    .hero-image img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
+    .hero-text { max-width: 600px; margin-right: 2em; }
+    .hero-text h2 { font-size: 2.5em; margin-bottom: .5em; }
+    .hero-text p { margin-bottom: 1em; font-size: 1.1em; }
+    .hero-text .btn { font-size: 1.1em; padding: .6em 1.2em; margin-top: .5em; margin-bottom: 2rem; }
+    .hero-image img { max-width: 100%; height: auto; border-radius: 10px; }
+
+    /* Features */
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2em;
-      text-align: center;
+      gap: 2em; text-align: center;
     }
-    .feature h3 {
-      font-size: 1.3em;
-      margin-bottom: 0.5em;
-    }
-    .feature p {
-      font-size: 0.95em;
-    }
+    .feature h3 { font-size: 1.3em; margin-bottom: .5em; }
+    .feature p { font-size: .95em; }
+
+    /* Buttons */
     .btn {
-      display: inline-block;
-      background: var(--accent-color);
-      color: #fff;
-      text-decoration: none;
-      border: none;
-      border-radius: 5px;
-      padding: 0.6em 1.2em;
-      cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
+      display: inline-block; background: var(--accent-color); color: #fff;
+      text-decoration: none; border: none; border-radius: 5px;
+      padding: .6em 1.2em; cursor: pointer; transition: background .3s, transform .3s;
       font-weight: 600;
     }
-    .btn:hover {
-      background: var(--accent-color-dark);
-      transform: translateY(-2px);
-    }
-    .btn:active {
-      transform: translateY(0);
-    }
+    .btn:hover { background: var(--accent-color-dark); transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    /* Fade In Animation */
     .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .6s ease-out, transform .6s ease-out;
     }
     .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+      opacity: 1; transform: translateY(0);
     }
-    footer {
+
+    /* New: Services Section */
+    .services {
       text-align: center;
-      padding: 2em 1em;
-      background: #fff;
-      color: #777;
-      font-size: 0.9em;
+    }
+    .services h2 {
+      font-size: 2em; margin-bottom: 1em; color: var(--accent-color);
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5em;
+    }
+    .service h3 {
+      font-size: 1.2em; font-weight: 600; margin: 0;
+    }
+
+    /* New: Courses Section */
+    .courses {
+      text-align: center;
+    }
+    .courses h2 {
+      font-size: 2em; margin-bottom: .8em; color: var(--accent-color);
+    }
+    .course-list {
+      list-style: none; padding: 0;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: .8em;
+    }
+    .course-list li {
+      background: var(--accent-color); color: #fff;
+      padding: .5em 1em; border-radius: 5px; font-weight: 600;
+    }
+    .certifications {
+      margin-top: 1em;
+    }
+    .badge {
+      display: inline-block; background: #fff; color: var(--accent-color);
+      border: 2px solid var(--accent-color); border-radius: 12px;
+      padding: .3em .8em; margin: 0 .5em; font-weight: 600;
+    }
+
+    footer {
+      text-align: center; padding: 2em 1em; background: #fff;
+      color: #777; font-size: .9em;
     }
   </style>
 </head>
@@ -161,7 +130,7 @@
     <div class="header-container">
       <div class="logo"><a href="../home/">KAV ACADEMY</a></div>
       <nav>
-        <a href="../home/">Home</a>
+        <a href="../home/" class="active">Home</a>
         <a href="../tutors/">Tutors</a>
         <a href="../bookings/">Bookings</a>
         <a href="../testimonials/">Testimonials</a>
@@ -169,7 +138,10 @@
       </nav>
     </div>
   </header>
+
   <main>
+    <!-- existing hero & features... -->
+
     <section class="hero">
       <div class="hero-text">
         <h2 class="fade-in">Unlock Your Potential</h2>
@@ -181,6 +153,7 @@
         <img src="../Screenshot 2025-06-12 232228.png" alt="Tutor helping a student">
       </div>
     </section>
+
     <section class="features">
       <div class="feature fade-in">
         <h3>Personalized Approach</h3>
@@ -192,17 +165,49 @@
       </div>
       <div class="feature fade-in">
         <h3>Flexible Scheduling</h3>
-        <p>Schedule sessions at your convenience – I offer single-session bookings available throughout the week, with no long-term commitment to any rigid schedule. After all, the goal is to reduce the need to have sesisons over time!</p>
+        <p>Schedule sessions at your convenience – I offer single-session bookings available throughout the week, with no long-term commitment to any rigid schedule.</p>
       </div>
       <div class="feature fade-in">
         <h3>Proven Results</h3>
         <p>My students see measurable improvements in grades, test scores, and confidence - all from day one.</p>
       </div>
     </section>
+
+    <!-- New Services Section -->
+    <section class="services">
+      <h2 class="fade-in">Services I Offer</h2>
+      <div class="services-grid">
+        <div class="service fade-in"><h3>One-on-One Tutoring</h3></div>
+        <div class="service fade-in"><h3>Group Tutoring</h3></div>
+        <div class="service fade-in"><h3>Resumes</h3></div>
+        <div class="service fade-in"><h3>University Planning, Applications &amp; Scholarships</h3></div>
+        <div class="service fade-in"><h3>Personal Profile</h3></div>
+        <div class="service fade-in"><h3>Coaching, Planning &amp; Mentoring</h3></div>
+      </div>
+    </section>
+
+    <!-- New Courses Section -->
+    <section class="courses">
+      <h2 class="fade-in">Courses I Teach</h2>
+      <ul class="course-list fade-in">
+        <li>Math 8–12</li>
+        <li>Science 8–10</li>
+        <li>Chemistry 11–12</li>
+        <li>Biology 11–12</li>
+        <li>Physics 11–12</li>
+        <li>English 10–12</li>
+      </ul>
+      <div class="certifications fade-in">
+        <span class="badge">IB</span>
+        <span class="badge">AP</span>
+      </div>
+    </section>
   </main>
+
   <footer>
     <p>© 2025 Kav Academy. All rights reserved.</p>
   </footer>
+
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('.fade-in').forEach(function(el, index) {
