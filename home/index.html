@@ -1,3 +1,6 @@
+Here’s the **first half** of the complete page. It includes the `<head>` with **all** style definitions (including badge and modal styling), plus the `<header>`, **Hero**, **Features**, and **Services** sections. Copy–paste this, then in the next response you’ll get the second half (Courses, Certifications, Modal markup, footer and scripts).
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,6 +57,24 @@
     .hero-text .btn { font-size: 1.1em; padding: .6em 1.2em; margin-top: .5em; margin-bottom: 2rem; }
     .hero-image img { max-width: 100%; height: auto; border-radius: 10px; }
 
+    /* Features */
+    .features {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 2em; text-align: center; margin-bottom: 2em;
+    }
+    .feature h3 { font-size: 1.3em; margin-bottom: .5em; }
+    .feature p { font-size: .95em; }
+
+    /* Buttons */
+    .btn {
+      display: inline-block; background: var(--accent-color); color: #fff;
+      text-decoration: none; border: none; border-radius: 5px;
+      padding: .6em 1.2em; cursor: pointer;
+      transition: background .3s, transform .3s; font-weight: 600;
+    }
+    .btn:hover { background: var(--accent-color-dark); transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
     /* Fade-In */
     .fade-in {
       opacity: 0; transform: translateY(20px);
@@ -89,41 +110,6 @@
       box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
     .service-title { font-size: 1.2em; font-weight: 600; margin-bottom: .5em; color: #333; }
-
-    /* Courses */
-    .courses { text-align: center; }
-    .courses h2 {
-      font-size: 2em; margin-bottom: 1em; color: var(--accent-color);
-    }
-    .course-list {
-      list-style: none; display: flex; flex-wrap: wrap;
-      gap: 1em; justify-content: center; margin-bottom: 2em;
-    }
-    .course-list li {
-      background: var(--main-color); color: #fff;
-      padding: .6em 1.2em; border-radius: 5px;
-      font-weight: 600; text-transform: uppercase;
-      font-size: .9em; letter-spacing: .05em;
-    }
-
-    /* Certification badges */
-    .certifications {
-      display: flex; justify-content: center; gap: 2em; margin-top: 2em;
-    }
-    .cert-badge {
-      display: flex; flex-direction: column; align-items: center;
-      border-bottom: 1px solid #eee; padding: 1em;
-      transition: border-color .3s, transform .3s;
-    }
-    .cert-badge:hover {
-      border-color: var(--main-color);
-      transform: translateY(-5px);
-    }
-    .cert-badge img { width: 40px; height: auto; margin-bottom: .5em; }
-    .cert-badge span {
-      font-size: .9em; font-weight: 600; color: var(--accent-color-dark);
-      text-align: center;
-    }
 
     /* Modal overlay */
     .modal {
@@ -186,16 +172,47 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="hero fade-in">
+    <section class="hero">
       <div class="hero-text">
-        <h2>Unlock Your Potential</h2>
-        <p>
-          Welcome to Kav Academy, an academy that provides personalized one-on-one tutoring that empowers students to reach their highest potential.
+        <h2 class="fade-in">Unlock Your Potential</h2>
+        <p class="fade-in">
+          Welcome to Kav Academy, an academy that provides personalized one-on-one tutoring that empowers students to reach their highest potential. Kav Academy delivers a tailored learning experience in a simple and effective way that has helped many students excel.
         </p>
-        <a href="../bookings/" class="btn">Book a Session</a>
+        <p class="fade-in">
+          Experience the difference of individualized attention, expert guidance, and a passion for teaching that sets me apart. Your success story starts here.
+        </p>
+        <a href="../bookings/" class="btn fade-in">Book a Session</a>
       </div>
-      <div class="hero-image">
-        <img src="../Screenshot 2025-06-12 232228.png" alt="Tutor helping a student">
+      <div class="hero-image fade-in">
+        <img src="../Screenshot 2025-06-12 232228.png" alt="Tutor helping a student" />
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="feature fade-in">
+        <h3>Personalized Approach</h3>
+        <p>
+          Every session is tailored to the student's needs, ensuring efficient and effective learning. We identify weaknesses strategically and target them directly to get you where you want to be.
+        </p>
+      </div>
+      <div class="feature fade-in">
+        <h3>Expert Tutors</h3>
+        <p>
+          Learn from highly qualified and experienced tutors with outstanding credentials and a passion for teaching. The results speak for themselves.
+        </p>
+      </div>
+      <div class="feature fade-in">
+        <h3>Flexible Scheduling</h3>
+        <p>
+          Schedule sessions at your convenience – single-session bookings available throughout the week with no long-term commitments.
+        </p>
+      </div>
+      <div class="feature fade-in">
+        <h3>Proven Results</h3>
+        <p>
+          Students see measurable improvements in grades, test scores, and confidence from day one.
+        </p>
       </div>
     </section>
 
@@ -204,7 +221,7 @@
       <h2>Services Offered</h2>
       <div class="services-grid">
         <div
-          class="service-box"
+          class="service-box fade-in"
           data-title="One-on-One Tutoring"
           data-desc="Customized individual sessions focusing on your specific challenges and goals to ensure maximum progress and confidence."
           data-image="../one-on-one tutoring.jpg"
@@ -212,7 +229,7 @@
           <h3 class="service-title">One-on-One Tutoring</h3>
         </div>
         <div
-          class="service-box"
+          class="service-box fade-in"
           data-title="Group Tutoring"
           data-desc="Collaborative group sessions designed to foster peer learning, discussion, and problem-solving in focused cohorts."
           data-image="../group tutoring.png"
@@ -220,7 +237,7 @@
           <h3 class="service-title">Group Tutoring</h3>
         </div>
         <div
-          class="service-box"
+          class="service-box fade-in"
           data-title="Resumes"
           data-desc="Professional resume crafting that highlights your achievements, skills, and career goals, tailored to each opportunity."
           data-image="../resumes.jpg"
@@ -228,7 +245,7 @@
           <h3 class="service-title">Resumes</h3>
         </div>
         <div
-          class="service-box"
+          class="service-box fade-in"
           data-title="University Planning, Applications & Scholarships"
           data-desc="Expert guidance through university selection, application strategies, and securing bursaries, grants, and scholarships."
           data-image="../university planning, applications & scholarships.jpg"
@@ -236,7 +253,7 @@
           <h3 class="service-title">University Planning, Applications & Scholarships</h3>
         </div>
         <div
-          class="service-box"
+          class="service-box fade-in"
           data-title="Personal Profile"
           data-desc="Develop a compelling personal and academic profile that showcases your unique strengths and experiences."
           data-image="../personal profile.jpg"
@@ -244,7 +261,7 @@
           <h3 class="service-title">Personal Profile</h3>
         </div>
         <div
-          class="service-box"
+          class="service-box fade-in"
           data-title="Coaching, Planning & Mentoring"
           data-desc="Holistic coaching and mentoring for academic planning, goal setting, and long-term success strategies."
           data-image="../coaching, life planning & mentoring.jpg"
@@ -253,7 +270,6 @@
         </div>
       </div>
     </section>
-
     <!-- Courses Section -->
     <section class="courses fade-in">
       <h2>Courses Offered</h2>
