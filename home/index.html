@@ -10,13 +10,17 @@
       --accent-color: #89c2d9;
       --accent-color-dark: #78b0c7;
     }
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       margin: 0; color: #333; line-height: 1.6;
+      overflow-x: hidden;
     }
+
+    /* Header */
     header {
       background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      position: relative; z-index: 10;
     }
     .header-container {
       max-width: 1200px; margin: 0 auto; padding: 1em;
@@ -37,11 +41,6 @@
     nav a.active::after { width: 100%; }
     nav a.active { color: var(--main-color); }
 
-    main {
-      max-width: 1200px; margin: 2em auto; padding: 0 1em;
-    }
-    section { margin-bottom: 2em; }
-
     /* Hero */
     .hero {
       display: flex; align-items: center; justify-content: center;
@@ -56,7 +55,7 @@
     /* Features */
     .features {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-      gap: 2em; text-align: center;
+      gap: 2em; text-align: center; margin-bottom: 2em;
     }
     .feature h3 { font-size: 1.3em; margin-bottom: .5em; }
     .feature p { font-size: .95em; }
@@ -95,65 +94,76 @@
       .services-grid { grid-template-columns: 1fr; }
     }
     .service-box {
-      display: flex; flex-direction: column; justify-content: center;
+      position: relative;
       text-align: center; background: #fff;
       border: 1px solid var(--accent-color); border-radius: 8px;
-      /* extra top padding to nudge content down */
-      padding: 2em 1.5em 1.5em;
+      padding: 2em 1.5em;
       cursor: pointer; transition: transform .3s, box-shadow .3s;
     }
     .service-box:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
-    .service-title {
-      font-size: 1.2em; font-weight: 600; margin: 0; color: #333;
-    }
-    .service-desc {
-      max-height: 0; overflow: hidden; opacity: 0;
-      transition: max-height .4s ease, opacity .4s ease, margin-top .4s ease;
-      margin-top: 0; color: #555;
-    }
-    .service-box.active { justify-content: flex-start; }
-    .service-box.active .service-desc {
-      max-height: 200px; opacity: 1; margin-top: 1em;
-    }
+    .service-title { font-size: 1.2em; font-weight: 600; margin-bottom: .5em; color: #333; }
+    .service-desc { display: none; }
 
-    /* Courses & Certifications */
-    .courses { text-align: center; }
-    .courses h2 {
-      font-size: 2em; margin-bottom: .8em; color: var(--accent-color);
-    }
-    .course-list {
-      list-style: none; padding: 0;
-      display: flex; flex-wrap: wrap; justify-content: center; gap: .8em;
-    }
-    .course-list li {
-      background: var(--accent-color); color: #fff;
-      padding: .5em 1em; border-radius: 5px; font-weight: 600;
-    }
+    /* Certification badges */
     .certifications {
-      display: flex; justify-content: center; gap: 1.5em; margin-top: 1.5em;
+      display: flex; justify-content: center; gap: 2em; margin-top: 2em;
     }
     .cert-badge {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-      padding: 1em;
-      transition: transform .3s, box-shadow .3s;
+      display: flex; flex-direction: column; align-items: center;
+      border-bottom: 1px solid #eee; padding: 1em;
+      transition: border-color .3s, transform .3s;
     }
     .cert-badge:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
       border-color: var(--main-color);
+      transform: translateY(-5px);
     }
-    .cert-badge img {
-      width: 40px; height: auto; margin-bottom: .5em;
-    }
+    .cert-badge img { width: 40px; height: auto; margin-bottom: .5em; }
     .cert-badge span {
       font-size: .9em; font-weight: 600; color: var(--accent-color-dark);
       text-align: center;
+    }
+
+    /* Modal overlay */
+    .modal {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      display: none; align-items: center; justify-content: center;
+      z-index: 1000;
+    }
+    .modal.active { display: flex; }
+    .modal-backdrop {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      animation: fadeIn 0.5s ease-out;
+    }
+    .modal-content {
+      position: relative; z-index: 1001;
+      width: 90%; max-width: 800px;
+      padding: 3em 2em;
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                  center/cover no-repeat;
+      border-radius: 8px;
+      color: #fff; text-align: center;
+      animation: scaleIn 0.5s ease-out;
+    }
+    .modal-content h3 { margin-bottom: 0.5em; font-size: 2em; }
+    .modal-content p { font-size: 1.1em; line-height: 1.4; }
+    .modal-close {
+      position: absolute; top: 1em; right: 1em;
+      background: transparent; border: none;
+      font-size: 2em; color: #fff; cursor: pointer;
+      transition: transform .3s;
+    }
+    .modal-close:hover { transform: scale(1.2); }
+
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to   { opacity: 1; transform: scale(1); }
     }
 
     footer {
@@ -181,10 +191,7 @@
       <div class="hero-text">
         <h2 class="fade-in">Unlock Your Potential</h2>
         <p class="fade-in">
-          Welcome to Kav Academy, an academy that provides personalized one-on-one tutoring that empowers students to reach their highest potential. Kav Academy delivers a tailored learning experience in a simple and effective way that has helped many students excel.
-        </p>
-        <p class="fade-in">
-          Experience the difference of individualized attention, expert guidance, and a passion for teaching that sets me apart. Your success story starts here.
+          Welcome to Kav Academy, an academy that provides personalized one-on-one tutoring that empowers students to reach their highest potential.
         </p>
         <a href="../bookings/" class="btn fade-in">Book a Session</a>
       </div>
@@ -193,101 +200,83 @@
       </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
-      <div class="feature fade-in">
-        <h3>Personalized Approach</h3>
-        <p>
-          Every session is tailored to the student's needs, ensuring efficient and effective learning. We identify weaknesses strategically and target them directly to get you where you want to be.
-        </p>
-      </div>
-      <div class="feature fade-in">
-        <h3>Expert Tutors</h3>
-        <p>
-          Learn from highly qualified and experienced tutors with outstanding credentials and a passion for teaching. The results speak for themselves.
-        </p>
-      </div>
-      <div class="feature fade-in">
-        <h3>Flexible Scheduling</h3>
-        <p>
-          Schedule sessions at your convenience – I offer single-session bookings available throughout the week, with no long-term commitment to any rigid schedule.
-        </p>
-      </div>
-      <div class="feature fade-in">
-        <h3>Proven Results</h3>
-        <p>
-          My students see measurable improvements in grades, test scores, and confidence – all from day one.
-        </p>
-      </div>
-    </section>
-
     <!-- Services Section -->
-    <section class="services">
-      <h2 class="fade-in">Services Offered</h2>
+    <section class="services fade-in">
+      <h2>Services Offered</h2>
       <div class="services-grid">
-        <div class="service-box fade-in">
+        <div
+          class="service-box fade-in"
+          data-title="One-on-One Tutoring"
+          data-desc="Customized individual sessions focusing on your specific challenges and goals to ensure maximum progress and confidence."
+          data-image="../one-on-one tutoring.jpg"
+        >
           <h3 class="service-title">One-on-One Tutoring</h3>
-          <p class="service-desc">
-            Customized individual sessions focusing on your specific challenges and goals to ensure maximum progress and confidence.
-          </p>
         </div>
-        <div class="service-box fade-in">
+        <div
+          class="service-box fade-in"
+          data-title="Group Tutoring"
+          data-desc="Collaborative group sessions designed to foster peer learning, discussion, and problem-solving in focused cohorts."
+          data-image="../group tutoring.jpg"
+        >
           <h3 class="service-title">Group Tutoring</h3>
-          <p class="service-desc">
-            Collaborative group sessions designed to foster peer learning, discussion, and problem-solving in small, focused cohorts. Please note that group sessions are only offered for students who collaborate well, and are in the same class or at roughly the same skill level. 
-          </p>
         </div>
-        <div class="service-box fade-in">
+        <div
+          class="service-box fade-in"
+          data-title="Resumes"
+          data-desc="Professional resume crafting that highlights your achievements, skills, and career goals, tailored to each opportunity."
+          data-image="../resumes.jpg"
+        >
           <h3 class="service-title">Resumes</h3>
-          <p class="service-desc">
-            Professional resume crafting that highlights your achievements, skills, and career goals, tailored to each opportunity.
-          </p>
         </div>
-        <div class="service-box fade-in">
-          <h3 class="service-title">University Planning, Applications &amp; Scholarships</h3>
-          <p class="service-desc">
-            Expert guidance through university selection, application strategies, and securing bursaries, grants, and scholarships.
-          </p>
+        <div
+          class="service-box fade-in"
+          data-title="University Planning, Applications & Scholarships"
+          data-desc="Expert guidance through university selection, application strategies, and securing bursaries, grants, and scholarships."
+          data-image="../university planning, applications & scholarships.jpg"
+        >
+          <h3 class="service-title">University Planning, Applications & Scholarships</h3>
         </div>
-        <div class="service-box fade-in">
+        <div
+          class="service-box fade-in"
+          data-title="Personal Profile"
+          data-desc="Develop a compelling personal and academic profile that showcases your unique strengths and experiences."
+          data-image="../personal profile.jpg"
+        >
           <h3 class="service-title">Personal Profile</h3>
-          <p class="service-desc">
-            Develop a compelling personal and academic profile that showcases your unique strengths and experiences to admissions committees.
-          </p>
         </div>
-        <div class="service-box fade-in">
-          <h3 class="service-title">Coaching, Planning &amp; Mentoring</h3>
-          <p class="service-desc">
-            Holistic coaching and mentoring for academic planning, goal setting, and long-term success strategies. Everyone's different. We know how to capitalize on your unique strengths and interests, as opposed to offering generic advice on how the average person succeeds.
-          </p>
+        <div
+          class="service-box fade-in"
+          data-title="Coaching, Planning & Mentoring"
+          data-desc="Holistic coaching and mentoring for academic planning, goal setting, and long-term success strategies."
+          data-image="../coaching, planning & mentoring.jpg"
+        >
+          <h3 class="service-title">Coaching, Planning & Mentoring</h3>
         </div>
       </div>
-    </section>
 
-    <!-- Courses Section -->
-    <section class="courses">
-      <h2 class="fade-in">Courses Offered</h2>
-      <ul class="course-list fade-in">
-        <li>Math 8–12</li>
-        <li>Science 8–10</li>
-        <li>Chemistry 11–12</li>
-        <li>Biology 11–12</li>
-        <li>Physics 11–12</li>
-        <li>English 10–12</li>
-      </ul>
-
-      <div class="certifications fade-in">
+      <!-- Certification Badges -->
+      <div class="certifications">
         <div class="cert-badge">
           <img src="../ib-badge.png" alt="IB Certified">
-          <span>IB Certified<br>Instructor</span>
+          <span>IB Certified Instructor</span>
         </div>
         <div class="cert-badge">
           <img src="../ap-badge.png" alt="AP Certified">
-          <span>AP Certified<br>Instructor</span>
+          <span>AP Certified Instructor</span>
         </div>
       </div>
     </section>
   </main>
+
+  <!-- Modal -->
+  <div id="service-modal" class="modal">
+    <div class="modal-backdrop"></div>
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h3 id="modal-title"></h3>
+      <p id="modal-desc"></p>
+    </div>
+  </div>
 
   <footer>
     <p>© 2025 Kav Academy. All rights reserved.</p>
@@ -295,18 +284,37 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // fade-in sequence
-      document.querySelectorAll('.fade-in').forEach(function(el, index) {
-        setTimeout(function() {
-          el.classList.add('visible');
-        }, index * 200);
+      // Fade-in
+      document.querySelectorAll('.fade-in').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 200);
       });
-      // accordion
-      document.querySelectorAll('.service-box').forEach(function(box) {
-        box.addEventListener('click', function() {
-          box.classList.toggle('active');
+
+      // Modal logic
+      const modal = document.getElementById('service-modal');
+      const backdrop = modal.querySelector('.modal-backdrop');
+      const content = modal.querySelector('.modal-content');
+      const titleEl = document.getElementById('modal-title');
+      const descEl = document.getElementById('modal-desc');
+      const closeBtn = modal.querySelector('.modal-close');
+
+      document.querySelectorAll('.service-box').forEach(box => {
+        box.addEventListener('click', () => {
+          const img = box.getAttribute('data-image');
+          const title = box.getAttribute('data-title');
+          const desc = box.getAttribute('data-desc');
+
+          content.style.background = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${img}') center/cover no-repeat`;
+          titleEl.textContent = title;
+          descEl.textContent = desc;
+          modal.classList.add('active');
         });
       });
+
+      function closeModal() {
+        modal.classList.remove('active');
+      }
+      backdrop.addEventListener('click', closeModal);
+      closeBtn.addEventListener('click', closeModal);
     });
   </script>
 </body>
