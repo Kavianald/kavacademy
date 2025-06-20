@@ -136,14 +136,17 @@
       display: flex; justify-content: center; gap: 1.5em; margin-top: 1.5em;
     }
     .cert-badge {
-      display: flex; flex-direction: column; align-items: center;
-      background: #fff; border: 2px solid var(--accent-color);
-      border-radius: 8px; padding: 1em; width: 100px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-bottom: 1px solid #eee;
+      padding: 1em;
       transition: transform .3s, box-shadow .3s;
     }
     .cert-badge:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      border-color: var(--main-color);
     }
     .cert-badge img {
       width: 40px; height: auto; margin-bottom: .5em;
