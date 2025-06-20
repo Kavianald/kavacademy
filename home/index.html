@@ -13,13 +13,10 @@
     * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      margin: 0;
-      color: #333;
-      line-height: 1.6;
+      margin: 0; color: #333; line-height: 1.6;
     }
     header {
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
     .header-container {
       max-width: 1200px; margin: 0 auto; padding: 1em;
@@ -27,17 +24,17 @@
     }
     .logo a {
       text-decoration: none; font-size: 1.4em; font-weight: 600;
-      letter-spacing: 0.1em; color: #333;
+      letter-spacing: .1em; color: #333;
     }
     nav a {
       text-decoration: none; color: #333; margin: 0 1em;
-      position: relative; transition: color 0.3s;
+      position: relative; transition: color .3s;
     }
     nav a:hover { color: var(--main-color); }
     nav a::after {
       content: ""; position: absolute; bottom: -4px; left: 0;
       height: 2px; background: var(--main-color); width: 0;
-      transition: width 0.3s;
+      transition: width .3s;
     }
     nav a:hover::after,
     nav a.active::after { width: 100%; }
@@ -59,11 +56,21 @@
     .hero-text .btn { font-size: 1.1em; padding: .6em 1.2em; margin-top: .5em; margin-bottom: 2rem; }
     .hero-image img { max-width: 100%; height: auto; border-radius: 10px; }
 
-    /* Testimonials-style Features */
+    /* Features styled like testimonials, forced 4 columns */
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(4, 1fr); /* exactly 4 per row */
       gap: 2em;
+    }
+    @media (max-width: 992px) {
+      .features-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row on tablets */
+      }
+    }
+    @media (max-width: 600px) {
+      .features-grid {
+        grid-template-columns: 1fr; /* 1 per row on phones */
+      }
     }
     .feature-box {
       background: #f9f9f9;
@@ -80,9 +87,7 @@
     }
 
     /* Services Section */
-    .services {
-      text-align: center;
-    }
+    .services { text-align: center; }
     .services h2 {
       font-size: 2em; margin-bottom: 1em; color: var(--accent-color);
     }
@@ -210,7 +215,7 @@
       </div>
     </section>
 
-    <!-- Restyled Features Section -->
+    <!-- Four Features in a Row -->
     <section class="features-grid">
       <blockquote class="feature-box fade-in">
         <h3>Personalized Approach</h3>
