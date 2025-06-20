@@ -67,7 +67,7 @@
     nav a.active::after { width: 100%; }
     nav a.active { color: var(--main-color); }
 
-    /* Hero (full-width) */
+    /* Hero (restore original layout) */
     .hero {
       display: flex;
       align-items: center;
@@ -77,10 +77,8 @@
       flex-wrap: wrap;
     }
     .hero-text {
-      max-width: var(--max-content-width);
-      width: 100%;
-      text-align: center;
-      margin-bottom: 2em;
+      max-width: 600px;
+      margin-right: 2em;
     }
     .hero-text h2 {
       font-size: 2.5em;
@@ -105,11 +103,6 @@
     .hero-text .btn:hover {
       background: var(--accent-color-dark);
       transform: translateY(-2px);
-    }
-    .hero-image {
-      max-width: var(--max-content-width);
-      width: 100%;
-      text-align: center;
     }
     .hero-image img {
       max-width: 100%;
@@ -173,7 +166,6 @@
       .services-grid { grid-template-columns: 1fr; }
     }
     .service-box {
-      position: relative;
       background: #fff;
       border: 1px solid var(--accent-color);
       border-radius: 8px;
@@ -255,16 +247,20 @@
 
     /* Modal overlay */
     .modal {
-      position: fixed; top: 0; left: 0;
+      position: fixed;
+      top: 0; left: 0;
       width: 100%; height: 100%;
-      display: none; align-items: center; justify-content: center;
+      display: none;
+      align-items: center;
+      justify-content: center;
       z-index: 1000;
     }
     .modal.active {
       display: flex;
     }
     .modal-backdrop {
-      position: absolute; top: 0; left: 0;
+      position: absolute;
+      top: 0; left: 0;
       width: 100%; height: 100%;
       background: rgba(0,0,0,0.7);
       animation: fadeIn 0.5s ease-out;
@@ -273,7 +269,9 @@
       position: relative; z-index: 1001;
       width: 90%; max-width: 800px;
       padding: 3em 2em;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), center/cover no-repeat;
+      background:
+        linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+        center/cover no-repeat;
       border-radius: 8px;
       color: #fff;
       text-align: center;
@@ -288,9 +286,13 @@
       line-height: 1.4;
     }
     .modal-close {
-      position: absolute; top: 1em; right: 1em;
-      background: transparent; border: none;
-      font-size: 2em; color: #fff; cursor: pointer;
+      position: absolute;
+      top: 1em; right: 1em;
+      background: transparent;
+      border: none;
+      font-size: 2em;
+      color: #fff;
+      cursor: pointer;
       transition: transform .3s;
     }
     .modal-close:hover {
@@ -329,12 +331,17 @@
     </div>
   </header>
 
-  <!-- Hero (full-width) -->
+  <!-- Hero Section (restored original) -->
   <section class="hero">
-    <div class="hero-text fade-in">
-      <h2>Unlock Your Potential</h2>
-      <p>Welcome to Kav Academy, an academy that provides personalized one-on-one tutoring that empowers students to reach their highest potential.</p>
-      <a href="../bookings/" class="btn">Book a Session</a>
+    <div class="hero-text">
+      <h2 class="fade-in">Unlock Your Potential</h2>
+      <p class="fade-in">
+        Welcome to Kav Academy, an academy that provides personalized one-on-one tutoring that empowers students to reach their highest potential. Kav Academy delivers a tailored learning experience in a simple and effective way that has helped many students excel.
+      </p>
+      <p class="fade-in">
+        Experience the difference of individualized attention, expert guidance, and a passion for teaching that sets me apart. Your success story starts here.
+      </p>
+      <a href="../bookings/" class="btn fade-in">Book a Session</a>
     </div>
     <div class="hero-image fade-in">
       <img src="../Screenshot 2025-06-12 232228.png" alt="Tutor helping a student">
@@ -443,9 +450,9 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Fade-in
-      document.querySelectorAll('.fade-in').forEach((el,i) => {
-        setTimeout(() => el.classList.add('visible'), i*200);
+      // Fade-in sequence
+      document.querySelectorAll('.fade-in').forEach((el, i) => {
+        setTimeout(() => el.classList.add('visible'), i * 200);
       });
 
       // Modal logic
