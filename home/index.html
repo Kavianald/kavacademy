@@ -4,324 +4,280 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kav Academy – Home</title>
-
-  <!-- Import refined serif font for headings -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --main-color: #b0e0e6;
       --accent-color: #89c2d9;
       --accent-color-dark: #78b0c7;
-      --luxury-black: #000;
-      --luxury-white: #fff;
-      --transition-time: 0.5s;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      color: var(--luxury-black);
-      background: var(--luxury-white);
-      overflow-x: hidden;
+      margin: 0; color: #333; line-height: 1.6;
     }
-
-    /* Transparent header over hero */
     header {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      padding: 1em 2em;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 10;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    .header-container {
+      max-width: 1200px; margin: 0 auto; padding: 1em;
+      display: flex; align-items: center; justify-content: space-between;
     }
     .logo a {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2em;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.9);
-      text-decoration: none;
-    }
-    nav {
-      display: flex;
-      gap: 2em;
-      font-size: 0.85em;
-      text-transform: uppercase;
+      text-decoration: none; font-size: 1.4em; font-weight: 600;
+      letter-spacing: .1em; color: #333;
     }
     nav a {
-      color: rgba(255,255,255,0.9);
-      text-decoration: none;
-      position: relative;
-      transition: color var(--transition-time);
+      text-decoration: none; color: #333; margin: 0 1em;
+      position: relative; transition: color .3s;
     }
+    nav a:hover { color: var(--main-color); }
     nav a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--luxury-white);
-      transition: width var(--transition-time);
-    }
-    nav a:hover,
-    nav a.active {
-      color: var(--luxury-white);
+      content: ""; position: absolute; bottom: -4px; left: 0;
+      height: 2px; background: var(--main-color); width: 0;
+      transition: width .3s;
     }
     nav a:hover::after,
-    nav a.active::after {
-      width: 100%;
-    }
+    nav a.active::after { width: 100%; }
+    nav a.active { color: var(--main-color); }
 
-    /* Full-bleed hero */
-    .hero {
-      position: relative;
-      height: 80vh;
-      background: url('../Screenshot 2025-06-12 232228.png') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.3);
-    }
-    .hero-content {
-      position: relative;
-      text-align: center;
-      max-width: 600px;
-      padding: 2em;
-      color: var(--luxury-white);
-      animation: fadeInUp 1s ease-out both;
-    }
-    .hero-content h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3em;
-      line-height: 1.1;
-      margin-bottom: 0.5em;
-    }
-    .hero-content p {
-      font-size: 1.1em;
-      margin-bottom: 1.5em;
-      opacity: 0.9;
-    }
-    .hero-content .btn {
-      display: inline-block;
-      padding: 0.8em 2em;
-      font-size: 0.95em;
-      text-transform: uppercase;
-      border: 1px solid var(--luxury-white);
-      background: transparent;
-      color: var(--luxury-white);
-      letter-spacing: 0.05em;
-      transition: background var(--transition-time), color var(--transition-time);
-    }
-    .hero-content .btn:hover {
-      background: var(--luxury-white);
-      color: var(--luxury-black);
-    }
-
-    /* Fade-in-up animation */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Main content wrapper */
     main {
-      margin-top: -5vh;
-      background: var(--luxury-white);
-      padding: 4em 2em;
+      max-width: 1200px; margin: 2em auto; padding: 0 1em;
     }
-    section {
-      max-width: 1200px;
-      margin: 0 auto 4em;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s ease-out forwards;
+    section { margin-bottom: 2em; }
+
+    /* Hero */
+    .hero {
+      display: flex; align-items: center; justify-content: center;
+      padding: 2em 1em; background: #f5fbff; flex-wrap: wrap;
     }
-    section:nth-of-type(2) { animation-delay: 0.3s; }
-    section:nth-of-type(3) { animation-delay: 0.5s; }
-    section:nth-of-type(4) { animation-delay: 0.7s; }
-    section h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2em;
-      margin-bottom: 1em;
-      color: var(--main-color);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+    .hero-text {
+      max-width: 600px; margin-right: 2em;
+    }
+    .hero-text h2 {
+      font-size: 2.5em; margin-bottom: .5em;
+    }
+    .hero-text p {
+      margin-bottom: 1em; font-size: 1.1em;
+    }
+    .hero-text .btn {
+      font-size: 1.1em; padding: .6em 1.2em;
+      margin-top: .5em; margin-bottom: 2rem;
+    }
+    .hero-image img {
+      max-width: 100%; height: auto; border-radius: 10px;
     }
 
-    /* Feature & service boxes */
+    /* Four Features in a Row — fixed card width, centered */
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2em;
+      grid-template-columns: repeat(auto-fit, 300px);
+      justify-content: center;
+      gap: 1em;
+    }
+    @media (max-width: 640px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
     }
     .feature-box {
-      padding: 2em;
-      border-bottom: 1px solid #eee;
-      transition: border-color var(--transition-time), transform var(--transition-time);
-    }
-    .feature-box:hover {
-      border-color: var(--main-color);
-      transform: translateY(-5px);
+      background: #f9f9f9;
+      border-left: 4px solid var(--main-color);
+      padding: 1em;
     }
     .feature-box h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4em;
-      margin-bottom: 0.5em;
-      color: var(--main-color);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      margin: 0 0 .5em; font-style: normal;
     }
     .feature-box p {
-      font-size: 1em;
-      color: #555;
-      line-height: 1.5;
-      max-width: 480px;
-      margin: 0 auto;
+      margin: 0; font-style: normal;
     }
 
-    /* Courses list */
+    /* Services Section */
+    .services { text-align: center; }
+    .services h2 {
+      font-size: 2em; margin-bottom: 1em; color: var(--accent-color);
+    }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2em;
+    }
+    @media (max-width: 800px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+    .service-box {
+      display:flex; flex-direction:column; justify-content:center;
+      text-align:center; background:#fff;
+      border:1px solid var(--accent-color);
+      border-radius:8px;
+      padding:2em 1.5em 1.5em;
+      cursor:pointer;
+      transition:transform .3s, box-shadow .3s;
+    }
+    .service-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+    .service-title {
+      font-size:1.2em; font-weight:600; margin:0; color:#333;
+    }
+    .service-desc {
+      max-height:0; overflow:hidden; opacity:0;
+      transition: max-height .4s ease, opacity .4s ease, margin-top .4s ease;
+      margin-top:0; color:#555;
+    }
+    .service-box.active { justify-content:flex-start; }
+    .service-box.active .service-desc {
+      max-height:200px; opacity:1; margin-top:1em;
+    }
+
+    /* Courses & Certifications */
+    .courses { text-align:center; }
+    .courses h2 {
+      font-size:2em; margin-bottom:.8em; color:var(--accent-color);
+    }
     .course-list {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1em;
-      justify-content: center;
-      margin-bottom: 2em;
+      list-style:none; padding:0;
+      display:flex; flex-wrap:wrap; justify-content:center; gap:.8em;
     }
     .course-list li {
-      background: var(--main-color);
-      color: var(--luxury-white);
-      padding: 0.6em 1.2em;
-      border-radius: 5px;
-      font-weight: 600;
-      text-transform: uppercase;
-      font-size: 0.9em;
-      letter-spacing: 0.05em;
+      background:var(--accent-color); color:#fff;
+      padding:.5em 1em; border-radius:5px; font-weight:600;
     }
-
-    /* Certification badges */
     .certifications {
-      display: flex;
-      justify-content: center;
-      gap: 2em;
+      display:flex; justify-content:center; gap:1.5em; margin-top:1.5em;
     }
     .cert-badge {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border-bottom: 1px solid #eee;
-      padding: 1em;
-      transition: border-color var(--transition-time), transform var(--transition-time);
+      display:flex; flex-direction:column; align-items:center;
+      background:#fff; border:2px solid var(--accent-color);
+      border-radius:8px; padding:1em; width:100px;
+      transition:transform .3s, box-shadow .3s;
     }
     .cert-badge:hover {
-      border-color: var(--main-color);
-      transform: translateY(-5px);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
     .cert-badge img {
-      width: 40px;
-      height: auto;
-      margin-bottom: 0.5em;
+      width:40px; height:auto; margin-bottom:.5em;
     }
     .cert-badge span {
-      font-family: 'Playfair Display', serif;
-      font-size: 0.9em;
-      color: var(--accent-color-dark);
-      text-align: center;
+      font-size:.9em; font-weight:600; color:var(--accent-color-dark);
+      text-align:center;
     }
 
-    /* Footer */
+    /* Buttons */
+    .btn {
+      display:inline-block; background:var(--accent-color); color:#fff;
+      text-decoration:none; border:none; border-radius:5px;
+      padding:.6em 1.2em; cursor:pointer;
+      transition: background .3s, transform .3s; font-weight:600;
+    }
+    .btn:hover { background:var(--accent-color-dark); transform:translateY(-2px); }
+    .btn:active { transform:translateY(0); }
+
+    /* Fade-in Animation */
+    .fade-in {
+      opacity:0; transform:translateY(20px);
+      transition: opacity .6s ease-out, transform .6s ease-out;
+    }
+    .fade-in.visible {
+      opacity:1; transform:translateY(0);
+    }
+
     footer {
-      padding: 2em;
-      font-size: 0.9em;
-      color: #aaa;
-      letter-spacing: 0.05em;
+      text-align:center; padding:2em 1em; background:#fff;
+      color:#777; font-size:.9em;
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo"><a href="../home/">KAV ACADEMY</a></div>
-    <nav>
-      <a href="../home/" class="active">Home</a>
-      <a href="../tutors/">Tutors</a>
-      <a href="../bookings/">Bookings</a>
-      <a href="../testimonials/">Testimonials</a>
-      <a href="../contact/">Contact</a>
-    </nav>
+    <div class="header-container">
+      <div class="logo"><a href="../home/">KAV ACADEMY</a></div>
+      <nav>
+        <a href="../home/" class="active">Home</a>
+        <a href="../tutors/">Tutors</a>
+        <a href="../bookings/">Bookings</a>
+        <a href="../testimonials/">Testimonials</a>
+        <a href="../contact/">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Unlock Your Potential</h1>
-      <p>Personalized one-on-one tutoring crafted to elevate your learning and build confidence.</p>
-      <a href="../bookings/" class="btn">Book a Session</a>
-    </div>
-  </section>
-
   <main>
-    <section class="features">
-      <h2>Our Key Advantages</h2>
-      <div class="features-grid">
-        <div class="feature-box">
-          <h3>Personalized Approach</h3>
-          <p>Tailored sessions focus exactly where you need to grow—no filler, just results.</p>
-        </div>
-        <div class="feature-box">
-          <h3>Expert Tutors</h3>
-          <p>Industry-leading instructors with proven track records of student success.</p>
-        </div>
-        <div class="feature-box">
-          <h3>Flexible Scheduling</h3>
-          <p>Book when it suits you—day or night, weekday or weekend with no long-term lock-ins.</p>
-        
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-text">
+        <h2 class="fade-in">Unlock Your Potential</h2>
+        <p class="fade-in">
+          Welcome to Kav Academy, an academy that provides personalized one-on-one tutoring that empowers students to reach their highest potential. Kav Academy delivers a tailored learning experience in a simple and effective way that has helped many students excel.
+        </p>
+        <p class="fade-in">
+          Experience the difference of individualized attention, expert guidance, and a passion for teaching that sets me apart. Your success story starts here.
+        </p>
+        <a href="../bookings/" class="btn fade-in">Book a Session</a>
+      </div>
+      <div class="hero-image fade-in">
+        <img src="../Screenshot 2025-06-12 232228.png" alt="Tutor helping a student">
       </div>
     </section>
+
+    <!-- Four Features in a Row -->
+    <section class="features-grid">
+      <blockquote class="feature-box fade-in">
+        <h3>Personalized Approach</h3>
+        <p>Every session is tailored to the student's needs, ensuring efficient and effective learning. We identify weaknesses strategically and target them directly to get you where you want to be.</p>
+      </blockquote>
+      <blockquote class="feature-box fade-in">
+        <h3>Expert Tutors</h3>
+        <p>Learn from highly qualified and experienced tutors with outstanding credentials and a passion for teaching. The results speak for themselves.</p>
+      </blockquote>
+      <blockquote class="feature-box fade-in">
+        <h3>Flexible Scheduling</h3>
+        <p>Schedule sessions at your convenience – I offer single-session bookings available throughout the week, with no long-term commitment to any rigid schedule.</p>
+      </blockquote>
+      <blockquote class="feature-box fade-in">
+        <h3>Proven Results</h3>
+        <p>My students see measurable improvements in grades, test scores, and confidence – all from day one.</p>
+      </blockquote>
+    </section>
+
+    <!-- Services Section -->
     <section class="services">
-      <h2>Services I Offer</h2>
-      <div class="features-grid">
-        <div class="feature-box">
-          <h3>One-on-One Tutoring</h3>
-          <p>Customized individual sessions focusing on your specific challenges and goals to ensure maximum progress.</p>
+      <h2 class="fade-in">Services I Offer</h2>
+      <div class="services-grid">
+        <div class="service-box fade-in">
+          <h3 class="service-title">One-on-One Tutoring</h3>
+          <p class="service-desc">Customized individual sessions focusing on your specific challenges and goals to ensure maximum progress and confidence.</p>
         </div>
-        <div class="feature-box">
-          <h3>Group Tutoring</h3>
-          <p>Collaborative group sessions designed to foster peer learning and problem-solving in focused cohorts.</p>
+        <div class="service-box fade-in">
+          <h3 class="service-title">Group Tutoring</h3>
+          <p class="service-desc">Collaborative group sessions designed to foster peer learning, discussion, and problem-solving in small, focused cohorts.</p>
         </div>
-        <div class="feature-box">
-          <h3>Resume Crafting</h3>
-          <p>Professional resume creation highlighting your achievements and tailored to your target roles.</p>
+        <div class="service-box fade-in">
+          <h3 class="service-title">Resumes</h3>
+          <p class="service-desc">Professional resume crafting that highlights your achievements, skills, and career goals, tailored to each opportunity.</p>
         </div>
-        <div class="feature-box">
-          <h3>University Planning</h3>
-          <p>Expert guidance through university selection, application strategies, and scholarship acquisition.</p>
+        <div class="service-box fade-in">
+          <h3 class="service-title">University Planning, Applications &amp; Scholarships</h3>
+          <p class="service-desc">Expert guidance through university selection, application strategies, and securing bursaries, grants, and scholarships.</p>
         </div>
-        <div class="feature-box">
-          <h3>Personal Profile</h3>
-          <p>Develop a compelling personal and academic profile to stand out with admissions committees.</p>
+        <div class="service-box fade-in">
+          <h3 class="service-title">Personal Profile</h3>
+          <p class="service-desc">Develop a compelling personal and academic profile that showcases your unique strengths and experiences to admissions committees.</p>
         </div>
-        <div class="feature-box">
-          <h3>Coaching & Mentoring</h3>
-          <p>Holistic coaching for academic planning, goal setting, and long-term success strategies.</p>
+        <div class="service-box fade-in">
+          <h3 class="service-title">Coaching, Planning &amp; Mentoring</h3>
+          <p class="service-desc">Holistic coaching and mentoring for academic planning, goal setting, and long-term success strategies.</p>
         </div>
       </div>
     </section>
+
+    <!-- Courses Section -->
     <section class="courses">
-      <h2>Courses I Teach</h2>
-      <ul class="course-list">
+      <h2 class="fade-in">Courses I Teach</h2>
+      <ul class="course-list fade-in">
         <li>Math 8–12</li>
         <li>Science 8–10</li>
         <li>Chemistry 11–12</li>
@@ -329,14 +285,14 @@
         <li>Physics 11–12</li>
         <li>English 10–12</li>
       </ul>
-      <div class="certifications">
+      <div class="certifications fade-in">
         <div class="cert-badge">
-          <img src="../ib-badge.png" alt="IB Certified" />
-          <span>IB Certified Instructor</span>
+          <img src="../ib-badge.png" alt="IB Certified">
+          <span>IB Certified<br>Instructor</span>
         </div>
         <div class="cert-badge">
-          <img src="../ap-badge.png" alt="AP Certified" />
-          <span>AP Certified Instructor</span>
+          <img src="../ap-badge.png" alt="AP Certified">
+          <span>AP Certified<br>Instructor</span>
         </div>
       </div>
     </section>
@@ -345,5 +301,20 @@
   <footer>
     <p>© 2025 Kav Academy. All rights reserved.</p>
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.fade-in').forEach(function(el, index) {
+        setTimeout(function() {
+          el.classList.add('visible');
+        }, index * 200);
+      });
+      document.querySelectorAll('.service-box').forEach(function(box) {
+        box.addEventListener('click', function() {
+          box.classList.toggle('active');
+        });
+      });
+    });
+  </script>
 </body>
 </html>
