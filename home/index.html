@@ -13,25 +13,31 @@
     * { box-sizing: border-box; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      margin: 0; color: #333; line-height: 1.6;
+      margin: 0;
+      color: #333;
+      line-height: 1.6;
     }
     header {
-      background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
     .header-container {
       max-width: 1200px; margin: 0 auto; padding: 1em;
       display: flex; align-items: center; justify-content: space-between;
     }
     .logo a {
-      text-decoration: none; font-size: 1.4em; font-weight: 600; letter-spacing: .1em; color: #333;
+      text-decoration: none; font-size: 1.4em; font-weight: 600;
+      letter-spacing: 0.1em; color: #333;
     }
     nav a {
-      text-decoration: none; color: #333; margin: 0 1em; position: relative; transition: color .3s;
+      text-decoration: none; color: #333; margin: 0 1em;
+      position: relative; transition: color 0.3s;
     }
     nav a:hover { color: var(--main-color); }
     nav a::after {
       content: ""; position: absolute; bottom: -4px; left: 0;
-      height: 2px; background: var(--main-color); width: 0; transition: width .3s;
+      height: 2px; background: var(--main-color); width: 0;
+      transition: width 0.3s;
     }
     nav a:hover::after,
     nav a.active::after { width: 100%; }
@@ -53,40 +59,35 @@
     .hero-text .btn { font-size: 1.1em; padding: .6em 1.2em; margin-top: .5em; margin-bottom: 2rem; }
     .hero-image img { max-width: 100%; height: auto; border-radius: 10px; }
 
-    /* Features */
-    .features {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-      gap: 2em; text-align: center;
+    /* Testimonials-style Features */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2em;
     }
-    .feature h3 { font-size: 1.3em; margin-bottom: .5em; }
-    .feature p { font-size: .95em; }
-
-    /* Buttons */
-    .btn {
-      display: inline-block; background: var(--accent-color); color: #fff;
-      text-decoration: none; border: none; border-radius: 5px;
-      padding: .6em 1.2em; cursor: pointer;
-      transition: background .3s, transform .3s; font-weight: 600;
+    .feature-box {
+      background: #f9f9f9;
+      border-left: 4px solid var(--main-color);
+      padding: 1em;
     }
-    .btn:hover { background: var(--accent-color-dark); transform: translateY(-2px); }
-    .btn:active { transform: translateY(0); }
-
-    /* Fade-In */
-    .fade-in {
-      opacity: 0; transform: translateY(20px);
-      transition: opacity .6s ease-out, transform .6s ease-out;
+    .feature-box h3 {
+      margin: 0 0 .5em;
+      font-style: normal;
     }
-    .fade-in.visible {
-      opacity: 1; transform: translateY(0);
+    .feature-box p {
+      margin: 0;
+      font-style: normal;
     }
 
-    /* Services */
-    .services { text-align: center; }
+    /* Services Section */
+    .services {
+      text-align: center;
+    }
     .services h2 {
       font-size: 2em; margin-bottom: 1em; color: var(--accent-color);
     }
     .services-grid {
-      display: grid; grid-template-columns: repeat(3,1fr); gap: 2em;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2em;
     }
     @media (max-width:800px){
       .services-grid { grid-template-columns: repeat(2,1fr); }
@@ -98,7 +99,6 @@
       display: flex; flex-direction: column; justify-content: center;
       text-align: center; background: #fff;
       border: 1px solid var(--accent-color); border-radius: 8px;
-      /* extra top padding to nudge content down */
       padding: 2em 1.5em 1.5em;
       cursor: pointer; transition: transform .3s, box-shadow .3s;
     }
@@ -153,8 +153,28 @@
       text-align: center;
     }
 
+    /* Buttons */
+    .btn {
+      display: inline-block; background: var(--accent-color); color: #fff;
+      text-decoration: none; border: none; border-radius: 5px;
+      padding: .6em 1.2em; cursor: pointer;
+      transition: background .3s, transform .3s; font-weight: 600;
+    }
+    .btn:hover { background: var(--accent-color-dark); transform: translateY(-2px); }
+    .btn:active { transform: translateY(0); }
+
+    /* Fade-in */
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .6s ease-out, transform .6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1; transform: translateY(0);
+    }
+
     footer {
-      text-align: center; padding: 2em 1em; background: #fff; color: #777; font-size: .9em;
+      text-align: center; padding: 2em 1em; background: #fff;
+      color: #777; font-size: .9em;
     }
   </style>
 </head>
@@ -190,80 +210,60 @@
       </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="features">
-      <div class="feature fade-in">
+    <!-- Restyled Features Section -->
+    <section class="features-grid">
+      <blockquote class="feature-box fade-in">
         <h3>Personalized Approach</h3>
-        <p>
-          Every session is tailored to the student's needs, ensuring efficient and effective learning. We identify weaknesses strategically and target them directly to get you where you want to be.
-        </p>
-      </div>
-      <div class="feature fade-in">
+        <p>Every session is tailored to the student's needs, ensuring efficient and effective learning. We identify weaknesses strategically and target them directly to get you where you want to be.</p>
+      </blockquote>
+      <blockquote class="feature-box fade-in">
         <h3>Expert Tutors</h3>
-        <p>
-          Learn from highly qualified and experienced tutors with outstanding credentials and a passion for teaching. The results speak for themselves.
-        </p>
-      </div>
-      <div class="feature fade-in">
+        <p>Learn from highly qualified and experienced tutors with outstanding credentials and a passion for teaching. The results speak for themselves.</p>
+      </blockquote>
+      <blockquote class="feature-box fade-in">
         <h3>Flexible Scheduling</h3>
-        <p>
-          Schedule sessions at your convenience – I offer single-session bookings available throughout the week, with no long-term commitment to any rigid schedule.
-        </p>
-      </div>
-      <div class="feature fade-in">
+        <p>Schedule sessions at your convenience – I offer single-session bookings available throughout the week, with no long-term commitment to any rigid schedule.</p>
+      </blockquote>
+      <blockquote class="feature-box fade-in">
         <h3>Proven Results</h3>
-        <p>
-          My students see measurable improvements in grades, test scores, and confidence – all from day one.
-        </p>
-      </div>
+        <p>My students see measurable improvements in grades, test scores, and confidence – all from day one.</p>
+      </blockquote>
     </section>
 
     <!-- Services Section -->
     <section class="services">
-      <h2 class="fade-in">Services Offered</h2>
+      <h2 class="fade-in">Services I Offer</h2>
       <div class="services-grid">
         <div class="service-box fade-in">
           <h3 class="service-title">One-on-One Tutoring</h3>
-          <p class="service-desc">
-            Customized individual sessions focusing on your specific challenges and goals to ensure maximum progress and confidence.
-          </p>
+          <p class="service-desc">Customized individual sessions focusing on your specific challenges and goals to ensure maximum progress and confidence.</p>
         </div>
         <div class="service-box fade-in">
           <h3 class="service-title">Group Tutoring</h3>
-          <p class="service-desc">
-            Collaborative group sessions designed to foster peer learning, discussion, and problem-solving in small, focused cohorts. Please note that group sessions are only offered for students who collaborate well, and are in the same class or at roughly the same skill level. 
-          </p>
+          <p class="service-desc">Collaborative group sessions designed to foster peer learning, discussion, and problem-solving in small, focused cohorts.</p>
         </div>
         <div class="service-box fade-in">
           <h3 class="service-title">Resumes</h3>
-          <p class="service-desc">
-            Professional resume crafting that highlights your achievements, skills, and career goals, tailored to each opportunity.
-          </p>
+          <p class="service-desc">Professional resume crafting that highlights your achievements, skills, and career goals, tailored to each opportunity.</p>
         </div>
         <div class="service-box fade-in">
           <h3 class="service-title">University Planning, Applications &amp; Scholarships</h3>
-          <p class="service-desc">
-            Expert guidance through university selection, application strategies, and securing bursaries, grants, and scholarships.
-          </p>
+          <p class="service-desc">Expert guidance through university selection, application strategies, and securing bursaries, grants, and scholarships.</p>
         </div>
         <div class="service-box fade-in">
           <h3 class="service-title">Personal Profile</h3>
-          <p class="service-desc">
-            Develop a compelling personal and academic profile that showcases your unique strengths and experiences to admissions committees.
-          </p>
+          <p class="service-desc">Develop a compelling personal and academic profile that showcases your unique strengths and experiences to admissions committees.</p>
         </div>
         <div class="service-box fade-in">
           <h3 class="service-title">Coaching, Planning &amp; Mentoring</h3>
-          <p class="service-desc">
-            Holistic coaching and mentoring for academic planning, goal setting, and long-term success strategies. Everyone's different. We know how to capitalize on your unique strengths and interests, as opposed to offering generic advice on how the average person succeeds.
-          </p>
+          <p class="service-desc">Holistic coaching and mentoring for academic planning, goal setting, and long-term success strategies.</p>
         </div>
       </div>
     </section>
 
     <!-- Courses Section -->
     <section class="courses">
-      <h2 class="fade-in">Courses Offered</h2>
+      <h2 class="fade-in">Courses I Teach</h2>
       <ul class="course-list fade-in">
         <li>Math 8–12</li>
         <li>Science 8–10</li>
@@ -272,7 +272,6 @@
         <li>Physics 11–12</li>
         <li>English 10–12</li>
       </ul>
-
       <div class="certifications fade-in">
         <div class="cert-badge">
           <img src="../ib-badge.png" alt="IB Certified">
@@ -292,13 +291,11 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // fade-in sequence
       document.querySelectorAll('.fade-in').forEach(function(el, index) {
         setTimeout(function() {
           el.classList.add('visible');
         }, index * 200);
       });
-      // accordion
       document.querySelectorAll('.service-box').forEach(function(box) {
         box.addEventListener('click', function() {
           box.classList.toggle('active');
