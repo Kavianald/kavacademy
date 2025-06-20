@@ -51,8 +51,26 @@
     .hero-text { max-width: 600px; margin-right: 2em; }
     .hero-text h2 { font-size: 2.5em; margin-bottom: .5em; }
     .hero-text p { margin-bottom: 1em; font-size: 1.1em; }
-    .hero-text .btn { font-size: 1.1em; padding: .6em 1.2em; margin-top: .5em; margin-bottom: 2rem; }
+    .hero-text .btn {
+      font-size: 1.1em; padding: .6em 1.2em; margin-top: .5em; margin-bottom: 2rem;
+      display: inline-block; background: var(--accent-color); color: #fff;
+      text-decoration: none; border: none; border-radius: 5px;
+      transition: background .3s, transform .3s; font-weight: 600;
+    }
+    .hero-text .btn:hover { background: var(--accent-color-dark); transform: translateY(-2px); }
     .hero-image img { max-width: 100%; height: auto; border-radius: 10px; }
+
+    /* Intro Features */
+    .features-intro {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+      gap: 2em; text-align: center; margin: 4em 1em;
+    }
+    .feature h3 {
+      font-size: 1.3em; margin-bottom: .5em; color: var(--accent-color-dark);
+    }
+    .feature p {
+      font-size: .95em; color: #555; line-height: 1.4;
+    }
 
     /* Fade-In */
     .fade-in {
@@ -64,7 +82,7 @@
     }
 
     /* Services */
-    .services { text-align: center; }
+    .services { text-align: center; margin: 4em 1em 2em; }
     .services h2 {
       font-size: 2em; margin-bottom: 1em; color: var(--accent-color);
     }
@@ -78,20 +96,20 @@
       .services-grid { grid-template-columns: 1fr; }
     }
     .service-box {
-      position: relative;
-      text-align: center; background: #fff;
+      position: relative; text-align: center; background: #fff;
       border: 1px solid var(--accent-color); border-radius: 8px;
-      padding: 2em 1.5em;
-      cursor: pointer; transition: transform .3s, box-shadow .3s;
+      padding: 2em 1.5em; cursor: pointer;
+      transition: transform .3s, box-shadow .3s;
     }
     .service-box:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
-    .service-title { font-size: 1.2em; font-weight: 600; margin-bottom: .5em; color: #333; }
+    .service-title {
+      font-size: 1.2em; font-weight: 600; margin-bottom: .5em; color: #333;
+    }
 
     /* Courses */
-    .courses { text-align: center; }
+    .courses { text-align: center; margin: 4em 1em; }
     .courses h2 {
       font-size: 2em; margin-bottom: 1em; color: var(--accent-color);
     }
@@ -116,8 +134,7 @@
       transition: border-color .3s, transform .3s;
     }
     .cert-badge:hover {
-      border-color: var(--main-color);
-      transform: translateY(-5px);
+      border-color: var(--main-color); transform: translateY(-5px);
     }
     .cert-badge img { width: 40px; height: auto; margin-bottom: .5em; }
     .cert-badge span {
@@ -134,8 +151,7 @@
     .modal.active { display: flex; }
     .modal-backdrop {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0,0,0,0.7);
-      animation: fadeIn 0.5s ease-out;
+      background: rgba(0,0,0,0.7); animation: fadeIn 0.5s ease-out;
     }
     .modal-content {
       position: relative; z-index: 1001;
@@ -143,11 +159,10 @@
       padding: 3em 2em;
       background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
                   center/cover no-repeat;
-      border-radius: 8px;
-      color: #fff; text-align: center;
+      border-radius: 8px; color: #fff; text-align: center;
       animation: scaleIn 0.5s ease-out;
     }
-    .modal-content h3 { margin-bottom: 0.5em; font-size: 2em; }
+    .modal-content h3 { margin-bottom: .5em; font-size: 2em; }
     .modal-content p { font-size: 1.1em; line-height: 1.4; }
     .modal-close {
       position: absolute; top: 1em; right: 1em;
@@ -165,8 +180,10 @@
       to   { opacity: 1; transform: scale(1); }
     }
 
+    /* Footer */
     footer {
-      text-align: center; padding: 2em 1em; background: #fff; color: #777; font-size: .9em;
+      text-align: center; padding: 2em 1em; background: #fff;
+      color: #777; font-size: .9em;
     }
   </style>
 </head>
@@ -186,16 +203,36 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="hero fade-in">
+    <section class="hero">
       <div class="hero-text">
-        <h2>Unlock Your Potential</h2>
-        <p>
+        <h2 class="fade-in">Unlock Your Potential</h2>
+        <p class="fade-in">
           Welcome to Kav Academy, an academy that provides personalized one-on-one tutoring that empowers students to reach their highest potential.
         </p>
-        <a href="../bookings/" class="btn">Book a Session</a>
+        <a href="../bookings/" class="btn fade-in">Book a Session</a>
       </div>
-      <div class="hero-image">
+      <div class="hero-image fade-in">
         <img src="../Screenshot 2025-06-12 232228.png" alt="Tutor helping a student">
+      </div>
+    </section>
+
+    <!-- Intro Key Features -->
+    <section class="features-intro">
+      <div class="feature fade-in">
+        <h3>Personalized Approach</h3>
+        <p>Every session is tailored to the student's needs, ensuring efficient and effective learning by strategically targeting weaknesses.</p>
+      </div>
+      <div class="feature fade-in">
+        <h3>Expert Tutors</h3>
+        <p>Learn from highly qualified and experienced tutors with outstanding credentials and a passion for teaching.</p>
+      </div>
+      <div class="feature fade-in">
+        <h3>Flexible Scheduling</h3>
+        <p>Schedule sessions at your convenience—day or night, weekday or weekend—with no long-term commitment required.</p>
+      </div>
+      <div class="feature fade-in">
+        <h3>Proven Results</h3>
+        <p>See measurable improvements in grades, test scores, and confidence from day one with our data-driven approach.</p>
       </div>
     </section>
 
@@ -204,7 +241,7 @@
       <h2>Services Offered</h2>
       <div class="services-grid">
         <div
-          class="service-box"
+          class="service-box fade-in"
           data-title="One-on-One Tutoring"
           data-desc="Customized individual sessions focusing on your specific challenges and goals to ensure maximum progress and confidence."
           data-image="../one-on-one tutoring.jpg"
@@ -212,15 +249,15 @@
           <h3 class="service-title">One-on-One Tutoring</h3>
         </div>
         <div
-          class="service-box"
+          class="service-box fade-in"
           data-title="Group Tutoring"
           data-desc="Collaborative group sessions designed to foster peer learning, discussion, and problem-solving in focused cohorts."
-          data-image="../group tutoring.png"
+          data-image="../group tutoring.jpg"
         >
           <h3 class="service-title">Group Tutoring</h3>
         </div>
         <div
-          class="service-box"
+          class="service-box fade-in"
           data-title="Resumes"
           data-desc="Professional resume crafting that highlights your achievements, skills, and career goals, tailored to each opportunity."
           data-image="../resumes.jpg"
@@ -228,7 +265,7 @@
           <h3 class="service-title">Resumes</h3>
         </div>
         <div
-          class="service-box"
+          class="service-box fade-in"
           data-title="University Planning, Applications & Scholarships"
           data-desc="Expert guidance through university selection, application strategies, and securing bursaries, grants, and scholarships."
           data-image="../university planning, applications & scholarships.jpg"
@@ -236,7 +273,7 @@
           <h3 class="service-title">University Planning, Applications & Scholarships</h3>
         </div>
         <div
-          class="service-box"
+          class="service-box fade-in"
           data-title="Personal Profile"
           data-desc="Develop a compelling personal and academic profile that showcases your unique strengths and experiences."
           data-image="../personal profile.jpg"
@@ -244,17 +281,17 @@
           <h3 class="service-title">Personal Profile</h3>
         </div>
         <div
-          class="service-box"
+          class="service-box fade-in"
           data-title="Coaching, Planning & Mentoring"
           data-desc="Holistic coaching and mentoring for academic planning, goal setting, and long-term success strategies."
-          data-image="../coaching, life planning & mentoring.jpg"
+          data-image="../coaching, planning & mentoring.jpg"
         >
           <h3 class="service-title">Coaching, Planning & Mentoring</h3>
         </div>
       </div>
     </section>
 
-    <!-- Courses Section -->
+    <!-- Courses & Certifications -->
     <section class="courses fade-in">
       <h2>Courses Offered</h2>
       <ul class="course-list">
@@ -313,16 +350,16 @@
           const title = box.getAttribute('data-title');
           const desc = box.getAttribute('data-desc');
 
-          content.style.background = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('${img}') center/cover no-repeat`;
+          content.style.background = 
+            `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+             url('${img}') center/cover no-repeat`;
           titleEl.textContent = title;
           descEl.textContent = desc;
           modal.classList.add('active');
         });
       });
 
-      function closeModal() {
-        modal.classList.remove('active');
-      }
+      function closeModal() { modal.classList.remove('active'); }
       backdrop.addEventListener('click', closeModal);
       closeBtn.addEventListener('click', closeModal);
     });
