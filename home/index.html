@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kav Academy – Home</title>
   <style>
     :root {
@@ -11,114 +11,84 @@
       --accent-color-dark: #78b0c7;
     }
     * { box-sizing: border-box; }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      margin: 0;
-      color: #333;
-      line-height: 1.6;
+      margin: 0; color: #333; line-height: 1.6;
     }
+
     header {
       background: #fff;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
     .header-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 1em;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      max-width: 1200px; margin: 0 auto; padding: 1em;
+      display: flex; align-items: center; justify-content: space-between;
     }
     .logo a {
-      text-decoration: none;
-      font-size: 1.4em;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      color: #333;
+      text-decoration: none; font-size: 1.4em; font-weight: 600;
+      letter-spacing: .1em; color: #333;
     }
     nav a {
-      text-decoration: none;
-      color: #333;
-      margin: 0 1em;
-      position: relative;
-      transition: color 0.3s;
+      text-decoration: none; color: #333; margin: 0 1em;
+      position: relative; transition: color .3s;
     }
     nav a:hover { color: var(--main-color); }
     nav a::after {
-      content: "";
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      height: 2px;
-      background: var(--main-color);
-      width: 0;
-      transition: width 0.3s;
+      content: ""; position: absolute; bottom: -4px; left: 0;
+      height: 2px; background: var(--main-color); width: 0; transition: width .3s;
     }
     nav a:hover::after,
     nav a.active::after { width: 100%; }
     nav a.active { color: var(--main-color); }
 
     main {
-      max-width: 1200px;
-      margin: 2em auto;
-      padding: 0 1em;
+      max-width: 1200px; margin: 2em auto; padding: 0 1em;
     }
     section { margin-bottom: 2em; }
 
     /* Hero */
     .hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2em 1em;
-      background: #f5fbff;
-      flex-wrap: wrap;
+      display: flex; align-items: center; justify-content: center;
+      padding: 2em 1em; background: #f5fbff; flex-wrap: wrap;
     }
     .hero-text {
-      max-width: 600px;
-      margin-right: 2em;
+      max-width: 600px; margin-right: 2em;
     }
     .hero-text h2 {
-      font-size: 2.5em;
-      margin-bottom: 0.5em;
+      font-size: 2.5em; margin-bottom: .5em;
     }
     .hero-text p {
-      margin-bottom: 1em;
-      font-size: 1.1em;
+      margin-bottom: 1em; font-size: 1.1em;
     }
     .hero-text .btn {
-      font-size: 1.1em;
-      padding: 0.6em 1.2em;
-      margin-top: 0.5em;
-      margin-bottom: 2rem;
+      font-size: 1.1em; padding: .6em 1.2em;
+      margin-top: .5em; margin-bottom: 2rem;
     }
     .hero-image img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
+      max-width: 100%; height: auto; border-radius: 10px;
     }
 
-    /* Four Features in a Row — fixed width flex cards */
+    /* FEATURES: one row, no wrap */
     .features-grid {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2em; /* space between cards */
+      flex-wrap: nowrap;           /* never wrap to next line */
+      justify-content: center;     /* center the row */
+      gap: 2em;
+      overflow-x: auto;            /* allow horizontal scroll on narrow screens */
+      padding-bottom: 1em;         /* for scrollbar breathing room */
     }
     .feature-box {
-      flex: 1 1 260px;    /* basis 260px, can shrink if needed */
-      max-width: 260px;   /* never grow past this width */
+      flex: 0 0 260px;             /* fixed width */
       background: #f9f9f9;
       border-left: 4px solid var(--main-color);
       padding: 1em;
     }
     .feature-box h3 {
-      margin: 0 0 0.5em;
-      font-style: normal;
+      margin: 0 0 .5em; font-style: normal;
     }
     .feature-box p {
-      margin: 0;
-      font-style: normal;
+      margin: 0; font-style: normal;
     }
 
     /* Services Section */
@@ -126,58 +96,39 @@
       text-align: center;
     }
     .services h2 {
-      font-size: 2em;
-      margin-bottom: 1em;
-      color: var(--accent-color);
+      font-size: 2em; margin-bottom: 1em; color: var(--accent-color);
     }
     .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2em;
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 2em;
     }
     @media (max-width: 800px) {
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2,1fr); }
     }
     @media (max-width: 500px) {
       .services-grid { grid-template-columns: 1fr; }
     }
     .service-box {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      text-align: center;
-      background: #fff;
-      border: 1px solid var(--accent-color);
-      border-radius: 8px;
+      display: flex; flex-direction: column; justify-content: center;
+      text-align: center; background: #fff;
+      border: 1px solid var(--accent-color); border-radius: 8px;
       padding: 2em 1.5em 1.5em;
-      cursor: pointer;
-      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer; transition: transform .3s, box-shadow .3s;
     }
     .service-box:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
     .service-title {
-      font-size: 1.2em;
-      font-weight: 600;
-      margin: 0;
-      color: #333;
+      font-size: 1.2em; font-weight: 600; margin: 0; color: #333;
     }
     .service-desc {
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height 0.4s ease, opacity 0.4s ease, margin-top 0.4s ease;
-      margin-top: 0;
-      color: #555;
+      max-height: 0; overflow: hidden; opacity: 0;
+      transition: max-height .4s ease, opacity .4s ease, margin-top .4s ease;
+      margin-top: 0; color: #555;
     }
-    .service-box.active {
-      justify-content: flex-start;
-    }
+    .service-box.active { justify-content: flex-start; }
     .service-box.active .service-desc {
-      max-height: 200px;
-      opacity: 1;
-      margin-top: 1em;
+      max-height: 200px; opacity: 1; margin-top: 1em;
     }
 
     /* Courses & Certifications */
@@ -185,55 +136,34 @@
       text-align: center;
     }
     .courses h2 {
-      font-size: 2em;
-      margin-bottom: 0.8em;
-      color: var(--accent-color);
+      font-size: 2em; margin-bottom: .8em; color: var(--accent-color);
     }
     .course-list {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.8em;
+      list-style: none; padding: 0;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: .8em;
     }
     .course-list li {
-      background: var(--accent-color);
-      color: #fff;
-      padding: 0.5em 1em;
-      border-radius: 5px;
-      font-weight: 600;
+      background: var(--accent-color); color: #fff;
+      padding: .5em 1em; border-radius: 5px; font-weight: 600;
     }
     .certifications {
-      display: flex;
-      justify-content: center;
-      gap: 1.5em;
-      margin-top: 1.5em;
+      display: flex; justify-content: center; gap: 1.5em; margin-top: 1.5em;
     }
     .cert-badge {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #fff;
-      border: 2px solid var(--accent-color);
-      border-radius: 8px;
-      padding: 1em;
-      width: 100px;
-      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex; flex-direction: column; align-items: center;
+      background: #fff; border: 2px solid var(--accent-color);
+      border-radius: 8px; padding: 1em; width: 100px;
+      transition: transform .3s, box-shadow .3s;
     }
     .cert-badge:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
     .cert-badge img {
-      width: 40px;
-      height: auto;
-      margin-bottom: 0.5em;
+      width: 40px; height: auto; margin-bottom: .5em;
     }
     .cert-badge span {
-      font-size: 0.9em;
-      font-weight: 600;
-      color: var(--accent-color-dark);
+      font-size: .9em; font-weight: 600; color: var(--accent-color-dark);
       text-align: center;
     }
 
@@ -245,9 +175,9 @@
       text-decoration: none;
       border: none;
       border-radius: 5px;
-      padding: 0.6em 1.2em;
+      padding: .6em 1.2em;
       cursor: pointer;
-      transition: background 0.3s, transform 0.3s;
+      transition: background .3s, transform .3s;
       font-weight: 600;
     }
     .btn:hover {
@@ -258,23 +188,18 @@
       transform: translateY(0);
     }
 
-    /* Fade-in Animation */
+    /* Fade-in */
     .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .6s ease-out, transform .6s ease-out;
     }
     .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
+      opacity: 1; transform: translateY(0);
     }
 
     footer {
-      text-align: center;
-      padding: 2em 1em;
-      background: #fff;
-      color: #777;
-      font-size: 0.9em;
+      text-align: center; padding: 2em 1em; background: #fff;
+      color: #777; font-size: .9em;
     }
   </style>
 </head>
@@ -293,7 +218,7 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
+    <!-- Hero -->
     <section class="hero">
       <div class="hero-text">
         <h2 class="fade-in">Unlock Your Potential</h2>
@@ -310,7 +235,7 @@
       </div>
     </section>
 
-    <!-- Four Features in a Row -->
+    <!-- Four Features in one row -->
     <section class="features-grid">
       <blockquote class="feature-box fade-in">
         <h3>Personalized Approach</h3>
@@ -330,7 +255,7 @@
       </blockquote>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services -->
     <section class="services">
       <h2 class="fade-in">Services I Offer</h2>
       <div class="services-grid">
@@ -361,7 +286,7 @@
       </div>
     </section>
 
-    <!-- Courses Section -->
+    <!-- Courses -->
     <section class="courses">
       <h2 class="fade-in">Courses I Teach</h2>
       <ul class="course-list fade-in">
@@ -374,11 +299,11 @@
       </ul>
       <div class="certifications fade-in">
         <div class="cert-badge">
-          <img src="../ib-badge.png" alt="IB Certified">
+          <img src="../ib-badge.png" alt="IB Certified" />
           <span>IB Certified<br>Instructor</span>
         </div>
         <div class="cert-badge">
-          <img src="../ap-badge.png" alt="AP Certified">
+          <img src="../ap-badge.png" alt="AP Certified" />
           <span>AP Certified<br>Instructor</span>
         </div>
       </div>
@@ -391,16 +316,12 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.fade-in').forEach(function(el, index) {
-        setTimeout(function() {
-          el.classList.add('visible');
-        }, index * 200);
+      document.querySelectorAll('.fade-in').forEach(function(el, i) {
+        setTimeout(() => el.classList.add('visible'), i * 200);
       });
-      document.querySelectorAll('.service-box').forEach(function(box) {
-        box.addEventListener('click', function() {
-          box.classList.toggle('active');
-        });
-      });
+      document.querySelectorAll('.service-box').forEach(box =>
+        box.addEventListener('click', () => box.classList.toggle('active'))
+      );
     });
   </script>
 </body>
