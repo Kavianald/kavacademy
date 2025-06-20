@@ -11,6 +11,7 @@
       --accent-color-dark: #78b0c7;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       margin: 0; color: #333; line-height: 1.6;
@@ -19,7 +20,8 @@
 
     /* Header */
     header {
-      background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
       position: relative; z-index: 10;
     }
     .header-container {
@@ -51,24 +53,6 @@
     .hero-text p { margin-bottom: 1em; font-size: 1.1em; }
     .hero-text .btn { font-size: 1.1em; padding: .6em 1.2em; margin-top: .5em; margin-bottom: 2rem; }
     .hero-image img { max-width: 100%; height: auto; border-radius: 10px; }
-
-    /* Features */
-    .features {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
-      gap: 2em; text-align: center; margin-bottom: 2em;
-    }
-    .feature h3 { font-size: 1.3em; margin-bottom: .5em; }
-    .feature p { font-size: .95em; }
-
-    /* Buttons */
-    .btn {
-      display: inline-block; background: var(--accent-color); color: #fff;
-      text-decoration: none; border: none; border-radius: 5px;
-      padding: .6em 1.2em; cursor: pointer;
-      transition: background .3s, transform .3s; font-weight: 600;
-    }
-    .btn:hover { background: var(--accent-color-dark); transform: translateY(-2px); }
-    .btn:active { transform: translateY(0); }
 
     /* Fade-In */
     .fade-in {
@@ -105,7 +89,22 @@
       box-shadow: 0 8px 16px rgba(0,0,0,0.1);
     }
     .service-title { font-size: 1.2em; font-weight: 600; margin-bottom: .5em; color: #333; }
-    .service-desc { display: none; }
+
+    /* Courses */
+    .courses { text-align: center; }
+    .courses h2 {
+      font-size: 2em; margin-bottom: 1em; color: var(--accent-color);
+    }
+    .course-list {
+      list-style: none; display: flex; flex-wrap: wrap;
+      gap: 1em; justify-content: center; margin-bottom: 2em;
+    }
+    .course-list li {
+      background: var(--main-color); color: #fff;
+      padding: .6em 1.2em; border-radius: 5px;
+      font-weight: 600; text-transform: uppercase;
+      font-size: .9em; letter-spacing: .05em;
+    }
 
     /* Certification badges */
     .certifications {
@@ -187,15 +186,15 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero fade-in">
       <div class="hero-text">
-        <h2 class="fade-in">Unlock Your Potential</h2>
-        <p class="fade-in">
+        <h2>Unlock Your Potential</h2>
+        <p>
           Welcome to Kav Academy, an academy that provides personalized one-on-one tutoring that empowers students to reach their highest potential.
         </p>
-        <a href="../bookings/" class="btn fade-in">Book a Session</a>
+        <a href="../bookings/" class="btn">Book a Session</a>
       </div>
-      <div class="hero-image fade-in">
+      <div class="hero-image">
         <img src="../Screenshot 2025-06-12 232228.png" alt="Tutor helping a student">
       </div>
     </section>
@@ -205,7 +204,7 @@
       <h2>Services Offered</h2>
       <div class="services-grid">
         <div
-          class="service-box fade-in"
+          class="service-box"
           data-title="One-on-One Tutoring"
           data-desc="Customized individual sessions focusing on your specific challenges and goals to ensure maximum progress and confidence."
           data-image="../one-on-one tutoring.jpg"
@@ -213,15 +212,15 @@
           <h3 class="service-title">One-on-One Tutoring</h3>
         </div>
         <div
-          class="service-box fade-in"
+          class="service-box"
           data-title="Group Tutoring"
           data-desc="Collaborative group sessions designed to foster peer learning, discussion, and problem-solving in focused cohorts."
-          data-image="../group tutoring.jpg"
+          data-image="../group tutoring.png"
         >
           <h3 class="service-title">Group Tutoring</h3>
         </div>
         <div
-          class="service-box fade-in"
+          class="service-box"
           data-title="Resumes"
           data-desc="Professional resume crafting that highlights your achievements, skills, and career goals, tailored to each opportunity."
           data-image="../resumes.jpg"
@@ -229,7 +228,7 @@
           <h3 class="service-title">Resumes</h3>
         </div>
         <div
-          class="service-box fade-in"
+          class="service-box"
           data-title="University Planning, Applications & Scholarships"
           data-desc="Expert guidance through university selection, application strategies, and securing bursaries, grants, and scholarships."
           data-image="../university planning, applications & scholarships.jpg"
@@ -237,7 +236,7 @@
           <h3 class="service-title">University Planning, Applications & Scholarships</h3>
         </div>
         <div
-          class="service-box fade-in"
+          class="service-box"
           data-title="Personal Profile"
           data-desc="Develop a compelling personal and academic profile that showcases your unique strengths and experiences."
           data-image="../personal profile.jpg"
@@ -245,7 +244,7 @@
           <h3 class="service-title">Personal Profile</h3>
         </div>
         <div
-          class="service-box fade-in"
+          class="service-box"
           data-title="Coaching, Planning & Mentoring"
           data-desc="Holistic coaching and mentoring for academic planning, goal setting, and long-term success strategies."
           data-image="../coaching, life planning & mentoring.jpg"
@@ -253,8 +252,19 @@
           <h3 class="service-title">Coaching, Planning & Mentoring</h3>
         </div>
       </div>
+    </section>
 
-      <!-- Certification Badges -->
+    <!-- Courses Section -->
+    <section class="courses fade-in">
+      <h2>Courses Offered</h2>
+      <ul class="course-list">
+        <li>Math 8–12</li>
+        <li>Science 8–10</li>
+        <li>Chemistry 11–12</li>
+        <li>Biology 11–12</li>
+        <li>Physics 11–12</li>
+        <li>English 10–12</li>
+      </ul>
       <div class="certifications">
         <div class="cert-badge">
           <img src="../ib-badge.png" alt="IB Certified">
@@ -284,7 +294,7 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Fade-in
+      // Fade-in sequence
       document.querySelectorAll('.fade-in').forEach((el, i) => {
         setTimeout(() => el.classList.add('visible'), i * 200);
       });
