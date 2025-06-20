@@ -520,58 +520,61 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1) Fade-in on scroll via IntersectionObserver
-      const faders = document.querySelectorAll('.fade-in');
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-      };
-      const fadeObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-      faders.forEach(el => fadeObserver.observe(el));
-    
-      // 2) Modal logic for Services
-      const modal    = document.getElementById('service-modal');
-      const backdrop = modal.querySelector('.modal-backdrop');
-      const content  = modal.querySelector('.modal-content');
-      const titleEl  = document.getElementById('modal-title');
-      const descEl   = document.getElementById('modal-desc');
-      const closeBtn = modal.querySelector('.modal-close');
-
-      // Mobile nav toggle
-      const navToggle = document.querySelector('.nav-toggle');
-      const navMenu   = document.querySelector('header nav');
-      navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('open');
-      
-      document.querySelectorAll('.service-box').forEach(box => {
-        box.addEventListener('click', () => {
-          const img   = box.getAttribute('data-image');
-          const title = box.getAttribute('data-title');
-          const desc  = box.getAttribute('data-desc');
-    
-          content.style.background =
-            `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-             url('${img}') center/cover no-repeat`;
-          titleEl.textContent = title;
-          descEl.textContent  = desc;
-          modal.classList.add('active');
-        });
-      });
-    
-      function closeModal() {
-        modal.classList.remove('active');
+document.addEventListener('DOMContentLoaded', () => {
+  // 1) Fade-in on scroll via IntersectionObserver
+  const faders = document.querySelectorAll('.fade-in');
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  const fadeObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
-      backdrop.addEventListener('click', closeModal);
-      closeBtn.addEventListener('click', closeModal);
     });
-  </script>
+  }, observerOptions);
+  faders.forEach(el => fadeObserver.observe(el));
+
+  // 2) Modal logic for Services
+  const modal    = document.getElementById('service-modal');
+  const backdrop = modal.querySelector('.modal-backdrop');
+  const content  = modal.querySelector('.modal-content');
+  const titleEl  = document.getElementById('modal-title');
+  const descEl   = document.getElementById('modal-desc');
+  const closeBtn = modal.querySelector('.modal-close');
+
+  document.querySelectorAll('.service-box').forEach(box => {
+    box.addEventListener('click', () => {
+      const img   = box.getAttribute('data-image');
+      const title = box.getAttribute('data-title');
+      const desc  = box.getAttribute('data-desc');
+
+      content.style.background =
+        `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+         url('${img}') center/cover no-repeat`;
+      titleEl.textContent = title;
+      descEl.textContent  = desc;
+      modal.classList.add('active');
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove('active');
+  }
+  backdrop.addEventListener('click', closeModal);
+  closeBtn.addEventListener('click', closeModal);
+
+  // 3) Mobile nav toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navMenu   = document.querySelector('header nav');
+  navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('open');
+  });
+
+});  // ← closes DOMContentLoaded listener
+</script>
+
 </body>
 </html>
