@@ -53,11 +53,46 @@
       vertical-align: middle;
     }
 
-    .hero-logo {
-      height: 320px;               /* slightly larger by eye */
-      vertical-align: middle;
-      margin-right: 0.75em;
+        html {
+      scroll-behavior: smooth;
     }
+    
+    .hero {
+      /* full-screen logo background */
+      background: url('../Kav Academy Logo.png') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .hero-text {
+      /* semi-transparent “luxury” overlay so text pops */
+      background: rgba(255,255,255,0.6);
+      padding: 2rem 3rem;
+      border-radius: 8px;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    }
+    
+    .hero-text h2 {
+      font-size: 3em;
+      margin-bottom: 0.5em;
+    }
+    
+    .hero-text p {
+      font-size: 1.1em;
+      line-height: 1.5;
+      margin-bottom: 1.5em;
+    }
+    
+    .hero-text .btn {
+      font-size: 1.1em;
+      padding: 0.8em 1.6em;
+    }
+
     
     nav a {
       text-decoration: none;
@@ -355,7 +390,6 @@
   <!-- Hero Section (restored original) -->
   <section class="hero">
     <div class="hero-text">
-      <img src="../Kav Academy Logo.png" alt="Kav Academy logo" class="hero-logo">
       <h2 class="fade-in">Unlock Your Potential</h2>
       <p class="fade-in">
         Welcome to Kav Academy, an academy that provides personalized one-on-one tutoring that empowers students to reach their highest potential. Kav Academy delivers a tailored learning experience in a simple and effective way that has helped many students excel.
