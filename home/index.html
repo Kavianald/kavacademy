@@ -98,23 +98,16 @@
       border-radius: 10px;
     }
 
-    /* Four Features in a Row, equal columns */
+    /* Four Features in a Row — fixed width flex cards */
     .features-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1em;
-    }
-    @media (max-width: 992px) {
-      .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 600px) {
-      .features-grid {
-        grid-template-columns: 1fr;
-      }
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2em; /* space between cards */
     }
     .feature-box {
+      flex: 1 1 260px;    /* basis 260px, can shrink if needed */
+      max-width: 260px;   /* never grow past this width */
       background: #f9f9f9;
       border-left: 4px solid var(--main-color);
       padding: 1em;
@@ -143,14 +136,10 @@
       gap: 2em;
     }
     @media (max-width: 800px) {
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 500px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
+      .services-grid { grid-template-columns: 1fr; }
     }
     .service-box {
       display: flex;
