@@ -240,36 +240,39 @@
   </footer>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1) Mobile nav toggle
-      const navToggle = document.querySelector('.nav-toggle');
-      const navMenu   = document.querySelector('header nav');
-      if (navToggle && navMenu) {
-        navToggle.addEventListener('click', () => {
-          navMenu.classList.toggle('open');
-        });
-      }
-
-      // 2) Sequential fade-in on scroll + initial stagger
-      const faders = document.querySelectorAll('.fade-in');
-      let seq = 0;
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px 0px 0px'
-      };
-      const fadeObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add('visible');
-            }, seq * 200);
-            seq++;
-            observer.unobserve(entry.target);
-          }
-        });
-      }, observerOptions);
-      faders.forEach(el => fadeObserver.observe(el));
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1) Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu   = document.querySelector('header nav');
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+      });
+    }
+  
+    // 2) Fade-in on scroll with per-batch sequencing
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px 0px 0px'
+    };
+    const fadeObserver = new IntersectionObserver((entries, observer) => {
+      let delay = 0;
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          delay += 150;               // 150 ms between each element
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+  
+    document.querySelectorAll('.fade-in').forEach(el => {
+      fadeObserver.observe(el);
     });
+  });
   </script>
+
 </body>
 </html>
