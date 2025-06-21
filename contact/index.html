@@ -290,19 +290,22 @@
     <p>© 2025 Kav Academy. All rights reserved.</p>
   </footer>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const navToggle = document.querySelector('.nav-toggle');
-      const navMenu   = document.querySelector('header nav');
-      navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('open');
-      });
+  document.addEventListener('DOMContentLoaded', () => {
     
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.fade-in').forEach(function(el, idx) {
-        setTimeout(function() { el.classList.add('visible'); }, idx * 200);
-      });
+    // 1) Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu   = document.querySelector('header nav');
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
     });
-  });    
+  
+    // 2) Simple fade-in sequence on page load
+    document.querySelectorAll('.fade-in').forEach((el, idx) => {
+      setTimeout(() => el.classList.add('visible'), idx * 200);
+    });
+  
+  });
   </script>
+
 </body>
 </html>
