@@ -255,14 +255,14 @@
       let seq = 0;
       const observerOptions = {
         threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+        rootMargin: '0px 0px 0px 0px'
       };
       const fadeObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             setTimeout(() => {
               entry.target.classList.add('visible');
-            }, seq * 001);
+            }, seq * 200);
             seq++;
             observer.unobserve(entry.target);
           }
