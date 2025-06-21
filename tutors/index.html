@@ -10,7 +10,8 @@
       --accent-color: #89c2d9;
       --accent-color-dark: #78b0c7;
     }
-    * { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
       margin: 0;
@@ -18,6 +19,8 @@
       line-height: 1.7;
       background: #f5f8fa;
     }
+
+    /* Header */
     header {
       background: #fff;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
@@ -34,39 +37,43 @@
       text-decoration: none;
       font-size: 1.4em;
       font-weight: 600;
-      letter-spacing: 0.1em;
+      letter-spacing: .1em;
       color: #333;
     }
+    .logo-img {
+      height: 58px;
+      width: auto;
+      margin-right: .5em;
+      vertical-align: middle;
+    }
+
+    /* Nav links + underline */
     nav a {
       text-decoration: none;
       color: #333;
       margin: 0 1em;
       position: relative;
-      transition: color 0.3s;
+      transition: color .3s;
     }
-           
-        /* the underline bar */
     nav a::after {
       content: "";
       position: absolute;
       bottom: -4px;
       left: 0;
       height: 2px;
-      background: var(--accent-color);   /* ← use the same variable */
+      background: var(--accent-color);
       width: 0;
       transition: width .3s;
     }
-    
-    /* expand underline AND color the text */
     nav a:hover::after,
     nav a.active::after {
       width: 100%;
     }
     nav a.active {
-      color: var(--accent-color);        /* ← same as underline */
+      color: var(--accent-color);
     }
 
-    /* ——— Base: keep hidden on desktop ——— */
+    /* Hamburger (desktop hidden) */
     .nav-toggle {
       display: none;
       background: none;
@@ -78,28 +85,22 @@
       display: block;
       width: 100%;
       height: 2px;
-      background: #333;         /* make bars visible */
+      background: #333;
       border-radius: 2px;
       margin-bottom: 4px;
     }
-    .nav-toggle span:last-child {
-      margin-bottom: 0;
-    }
-    
-    /* ——— Mobile overlay menu ——— */
+    .nav-toggle span:last-child { margin-bottom: 0; }
+
+    /* Mobile overlay menu */
     @media (max-width: 768px) {
-      /* show the button */
       .nav-toggle {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         width: 24px;
         height: 18px;
-        position: relative;
-        z-index: 1010;          /* sit above the menu */
+        z-index: 1010;
       }
-    
-      /* full-screen sliding panel */
       header nav {
         position: fixed;
         top: 0; left: 0; right: 0; bottom: 0;
@@ -115,8 +116,6 @@
       header nav.open {
         transform: translateX(0);
       }
-    
-      /* beefy, luxurious links */
       header nav a {
         margin: 1em 0;
         font-size: 1.4em;
@@ -124,7 +123,6 @@
         color: var(--accent-color-dark);
         text-transform: uppercase;
         letter-spacing: .05em;
-        transition: color .3s;
       }
       header nav a:hover,
       header nav a.active {
@@ -132,13 +130,7 @@
       }
     }
 
-      .logo-img {
-        height: 58px;       /* nav-bar logo: small enough to sit nicely inline */
-        width: auto;        /* keep proportions */
-        margin-right: 0.5em;
-        vertical-align: middle;
-    }
-
+    /* Main card */
     main {
       max-width: 750px;
       margin: 3em auto 2em;
@@ -169,26 +161,24 @@
     .tutor-name {
       font-size: 2em;
       font-weight: 700;
-      margin: .5em 0 .2em;
       color: #222;
-      letter-spacing: 0.02em;
+      letter-spacing: .02em;
     }
     .tutor-qual {
-      color: #89c2d9;
+      color: var(--accent-color);
       font-size: 1.1em;
       font-weight: 500;
-      margin-bottom: .2em;
     }
-    .tutor-bio {
-      font-size: 1.07em;
-      max-width: 570px;
-      color: #444;
+
+    /* NEW: badge container */
+    .badge-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .5em;
       margin-bottom: 1.5em;
-      text-align: center;
     }
     .badge {
-      display: inline-block;
-      margin: .4em .25em;
       padding: .3em .9em;
       background: var(--accent-color);
       color: #fff;
@@ -199,54 +189,57 @@
       box-shadow: 0 2px 6px rgba(137,194,217,0.10);
     }
 
-    /* Updated Book a Session button */
+    /* Bio paragraphs */
+    .tutor-bio p {
+      max-width: 570px;
+      color: #444;
+      font-size: 1.07em;
+      line-height: 1.6;
+      text-align: center;
+      margin: 0 0 1.5em;
+    }
+
+    /* “Book a Session” */
     .motto {
       display: inline-block;
       font-size: 1.4em;
       font-weight: 600;
       padding: 1em 2.5em;
-      margin-top: -1em;
       background: var(--accent-color);
       color: #fff;
-      border: none;
       border-radius: 8px;
       text-decoration: none;
-      transition: background 0.3s, transform 0.3s;
+      transition: background .3s, transform .3s;
+      margin-bottom: 2em;
     }
-    .motto:hover {
-      background: var(--accent-color-dark);
-      transform: translateY(-2px);
-    }
-    .motto:active {
-      transform: translateY(0);
-    }
+    .motto:hover { background: var(--accent-color-dark); }
+    .motto:active { transform: translateY(1px); }
 
+    /* Footer */
     footer {
       text-align: center;
       padding: 2em 1em;
       background: #fff;
       color: #777;
       font-size: .95em;
-      margin-top: 2em;
     }
 
+    /* Fade-in base */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s ease-out, transform .6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Mobile tweaks */
     @media (max-width: 600px) {
-      main {
-        margin: 1.5em 0;
-        padding: 0 .5em;
-      }
-      .tutor-bio {
-        font-size: .98em;
-      }
-      .tutor-profile img {
-        width: 110px;
-        height: 110px;
-      }
-      .motto {
-        font-size: 1.2em;
-        padding: .8em 2em;
-        margin-top: .75em;
-      }
+      main { margin: 1.5em 0; padding: 0 .5em; }
+      .tutor-profile img { width: 110px; height: 110px; }
+      .motto { font-size: 1.2em; padding: .8em 2em; }
     }
   </style>
 </head>
@@ -255,19 +248,16 @@
     <div class="header-container">
       <div class="logo">
         <a href="../home/">
-          <img src="../Kav Academy Logo.png"
-               alt="Kav Academy logo"
-               class="logo-img">
+          <img src="../Kav Academy Logo.png" alt="Kav Academy logo" class="logo-img">
           KAV ACADEMY
         </a>
       </div>
 
+      <!-- Hamburger toggle -->
       <button class="nav-toggle" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
-          
+
       <nav>
         <a href="../home/">Home</a>
         <a href="../tutors/" class="active">Tutors</a>
@@ -277,40 +267,67 @@
       </nav>
     </div>
   </header>
+
   <main>
     <section class="tutor-profile">
       <img src="../IMG_0301.JPG" alt="Kavian Aldavoud" />
-      <div class="tutor-name">Kavian Aldavoud</div>
-      <div class="tutor-qual">BSc Biology, University of British Columbia</div>
-      <div>
+
+      <div class="tutor-name fade-in">Kavian Aldavoud</div>
+      <div class="tutor-qual fade-in">BSc Biology, University of British Columbia</div>
+
+      <div class="badge-container fade-in">
         <span class="badge">IB Diploma – WVSS Alum</span>
         <span class="badge">30+ Students Helped</span>
         <span class="badge">Former Academy Tutor</span>
       </div>
+
       <div class="tutor-bio">
-        I’m Kavian, a UBC Biology grad and IB alum from West Vancouver Secondary. Before starting my own practice, I worked at another tutoring academy, helping over 30 students raise their grades and confidence. What sets me apart? I’m young, so I’ve actually had many of the teachers my students have now—and I remember what it’s like to struggle.<br><br>
-        I can say from firsthand experience that a math PhD can’t break things down for students who are genuinely stuck. I’ve been there, and I had to figure out *how to learn* myself. Now, I make that process faster and easier for my students, using proven strategies with great results.<br><br>
-        The best part of my job is helping my students realise what they're capable of.
+        <p class="fade-in">
+          I’m Kavian, a UBC Biology grad and IB alum from West Vancouver Secondary. Before starting my own practice, I worked at another tutoring academy, helping over 30 students raise their grades and confidence. What sets me apart? I’m young, so I’ve actually had many of the teachers my students have now—and I remember what it’s like to struggle.
+        </p>
+        <p class="fade-in">
+          I can say from firsthand experience that a math PhD can’t break things down for students who are genuinely stuck. I’ve been there, and I had to figure out <em>how to learn</em> myself. Now, I make that process faster and easier for my students, using proven strategies with great results.
+        </p>
+        <p class="fade-in">
+          The best part of my job is helping my students realise what they're capable of.
+        </p>
       </div>
-      <a href="../bookings/" class="motto">Book a Session</a>
+
+      <a href="../bookings/" class="motto fade-in">Book a Session</a>
     </section>
   </main>
+
   <footer>
     <p>© 2025 Kav Academy. All rights reserved.</p>
   </footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const navToggle = document.querySelector('.nav-toggle');
-  const navMenu   = document.querySelector('header nav');
-  navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('open');
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1) Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu   = document.querySelector('header nav');
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+      });
+    }
+
+    // 2) Fade-in on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    const fadeObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    faders.forEach(el => fadeObserver.observe(el));
   });
-
-  // (Re-attach any other page-specific JS below…)
-});
-</script>
-
-  
+  </script>
 </body>
 </html>
