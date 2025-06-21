@@ -44,8 +44,23 @@
       position: relative;
       transition: color 0.3s;
     }
-    nav a:hover { color: var(--main-color); }
-    nav a.active { color: var(--main-color); }
+        /* the hidden “underline” bar */
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      height: 2px;
+      background: var(--main-color);
+      width: 0;
+      transition: width .3s;
+    }
+    
+    /* expand on hover or when .active */
+    nav a:hover::after,
+    nav a.active::after {
+      width: 100%;
+    }
 
     main {
       max-width: 750px;
