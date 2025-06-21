@@ -170,7 +170,7 @@
       font-weight: 500;
     }
 
-    /* NEW: badge container */
+    /* Badge container */
     .badge-container {
       display: flex;
       flex-wrap: wrap;
@@ -275,10 +275,10 @@
       <div class="tutor-name fade-in">Kavian Aldavoud</div>
       <div class="tutor-qual fade-in">BSc Biology, University of British Columbia</div>
 
-      <div class="badge-container fade-in">
-        <span class="badge">IB Diploma – WVSS Alum</span>
-        <span class="badge">30+ Students Helped</span>
-        <span class="badge">Former Academy Tutor</span>
+      <div class="badge-container">
+        <span class="badge fade-in">IB Diploma – WVSS Alum</span>
+        <span class="badge fade-in">30+ Students Helped</span>
+        <span class="badge fade-in">Former Academy Tutor</span>
       </div>
 
       <div class="tutor-bio">
@@ -302,32 +302,38 @@
   </footer>
 
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // 1) Mobile nav toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu   = document.querySelector('header nav');
-    if (navToggle && navMenu) {
-      navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('open');
-      });
-    }
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1) Mobile nav toggle
+      const navToggle = document.querySelector('.nav-toggle');
+      const navMenu   = document.querySelector('header nav');
+      if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+          navMenu.classList.toggle('open');
+        });
+      }
 
-    // 2) Fade-in on scroll
-    const faders = document.querySelectorAll('.fade-in');
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-    const fadeObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+      // 2) Fade-in on scroll, excluding badges
+      const faders = document.querySelectorAll('.fade-in:not(.badge)');
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      const fadeObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      faders.forEach(el => fadeObserver.observe(el));
+
+      // 3) Sequential badge fade-in
+      const badges = document.querySelectorAll('.badge.fade-in');
+      badges.forEach((badge, idx) => {
+        setTimeout(() => badge.classList.add('visible'), idx * 200);
       });
-    }, observerOptions);
-    faders.forEach(el => fadeObserver.observe(el));
-  });
+    });
   </script>
 </body>
 </html>
